@@ -4,606 +4,965 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apoorva Chandar · Product & Tech Consulting</title>
-<meta name="description" content="Apoorva Chandar — MBA at IIM Kozhikode, Wipro Consulting intern, ex-Wells Fargo software engineer. Aspiring product manager and technology consultant.">
+<meta name="description" content="Apoorva Chandar: MBA candidate at IIM Kozhikode, aspiring product manager and technology consultant. Ex-Wells Fargo software engineer, Wipro Consulting intern, Springer-published author.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fbfbfa; --bg2:#f3f3f1; --card:#f1f1ef; --card2:#ffffff;
-  --ink:#141414; --ink2:#55555a; --ink3:#8d8d93; --line:#e5e5e2;
-  --dark:#141414; --onDark:#fff; --dot:#1a1a1a;
-  --glow1:rgba(255,214,150,.45); --glow2:rgba(255,236,200,.5);
-  --accent:#ff8a3d;
-  --r:22px;
-}
-:root[data-theme="dark"]{
-  --bg:#0d0d0e; --bg2:#141416; --card:#18181b; --card2:#1f1f23;
-  --ink:#f2f2f0; --ink2:#a9a9ae; --ink3:#6f6f75; --line:#26262a;
-  --dark:#f2f2f0; --onDark:#111; --dot:#e8e8e8;
-  --glow1:rgba(255,140,60,.16); --glow2:rgba(120,90,255,.10);
+  --bg:#07070c; --bg2:#0d0d16; --glass:rgba(255,255,255,.045); --glass2:rgba(255,255,255,.08);
+  --line:rgba(255,255,255,.09); --ink:#f4f2ee; --ink2:#b3b1bd; --ink3:#77768a;
+  --o:#ff7a3d; --l:#a78bfa; --m:#5eead4; --y:#fcd34d; --g:#4ade80; --r:#f87171;
+  --rad:24px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Geist',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
+  radial-gradient(60vw 50vh at 85% 10%,rgba(167,139,250,.13),transparent 70%),
+  radial-gradient(50vw 50vh at 5% 60%,rgba(255,122,61,.10),transparent 70%),
+  radial-gradient(40vw 40vh at 60% 100%,rgba(94,234,212,.08),transparent 70%)}
 a{color:inherit;text-decoration:none}
-.serif{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-section{padding:110px 0 40px;position:relative}
-h2.sec{font-size:clamp(28px,3.4vw,40px);font-weight:500;letter-spacing:-.02em;margin-bottom:10px}
-p.lead{color:var(--ink2);max-width:620px;font-size:17px}
-.eyebrow{font-size:13px;color:var(--ink3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;display:block}
+::selection{background:var(--o);color:#000}
+#three{position:fixed;inset:0;z-index:1;pointer-events:none;width:100vw;height:100vh}
+main,header,footer{position:relative;z-index:2}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',monospace}
+.disp{font-family:'Syne',sans-serif}
+.grad{background:linear-gradient(90deg,var(--o),var(--l) 50%,var(--m));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:130px 0 60px;position:relative;overflow-x:clip}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--o);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.kicker::before{content:"";width:28px;height:1px;background:var(--o)}
+h2.big{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(34px,5.4vw,72px);line-height:1;letter-spacing:-.03em;margin-bottom:18px}
+p.sub{color:var(--ink2);max-width:640px;font-size:17px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:var(--rad);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2)}
 
-/* ---------- nav ---------- */
-.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:10px;align-items:center}
-.pill{display:flex;gap:2px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.06)}
-.pill a{display:flex;align-items:center;gap:6px;font-size:14px;padding:8px 14px;border-radius:999px;color:var(--ink2);transition:.2s}
-.pill a svg{width:15px;height:15px}
-.pill a:hover{color:var(--ink)}
-.pill a.on{background:var(--card2);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.cta{display:flex;align-items:center;gap:10px;background:var(--dark);color:var(--onDark);padding:6px 18px 6px 6px;border-radius:999px;font-size:14.5px;font-weight:500;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s}
-.cta:hover{transform:translateY(-1px)}
-.cta .orb{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffb36b,#ff6a3d 55%,#7a3cff);animation:spin 6s linear infinite}
-@keyframes spin{to{filter:hue-rotate(360deg)}}
-.theme{position:fixed;top:24px;right:24px;z-index:50;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;cursor:pointer;color:var(--ink)}
-.theme svg{width:17px;height:17px}
+/* progress + nav */
+#prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:linear-gradient(90deg,var(--o),var(--l),var(--m))}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:8px;align-items:center;padding:6px;border-radius:999px;background:rgba(12,12,20,.6);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav a{font-size:13px;padding:8px 14px;border-radius:999px;color:var(--ink2);transition:.2s;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a.on{background:rgba(255,255,255,.1);color:var(--ink)}
+.nav .cta{background:var(--ink);color:#000;font-weight:600;display:flex;align-items:center;gap:8px}
+.nav .cta:hover{color:#000}
+.nav .cta i{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 4px rgba(74,222,128,.25);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
 
-/* side ticks */
-.ticks{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:10px}
-.ticks a{display:block;height:2px;width:12px;background:var(--ink3);border-radius:2px;transition:.3s;position:relative}
-.ticks a.on{width:28px;background:var(--ink)}
-.ticks a span{position:absolute;left:36px;top:-8px;font-size:12px;color:var(--ink2);opacity:0;white-space:nowrap;transition:.2s}
-.ticks:hover a span{opacity:1}
+/* cursor */
+#cur{position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:1;left:0;top:0;background:radial-gradient(circle,rgba(255,122,61,.12),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s}
 
 /* ---------- hero ---------- */
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-20% -10% auto 30%;height:80%;background:radial-gradient(closest-side,var(--glow1),transparent),radial-gradient(closest-side at 70% 60%,var(--glow2),transparent);filter:blur(30px);pointer-events:none;animation:drift 14s ease-in-out infinite alternate}
-@keyframes drift{to{transform:translate(-8%,6%) scale(1.1)}}
-.hero-grid{display:grid;grid-template-columns:1fr 340px 1fr;gap:28px;align-items:center;width:100%}
-.rot{font-size:clamp(34px,4.4vw,56px);font-weight:600;letter-spacing:-.035em;line-height:1.02;min-height:2.1em;display:flex;align-items:center}
-.rot span{display:inline-block;transition:filter .6s,opacity .6s,transform .6s}
-.rot span.out{filter:blur(12px);opacity:0;transform:translateY(8px)}
-.btns{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
-.btn{font-size:14px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card2);display:inline-flex;gap:8px;align-items:center;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.btn.dk{background:var(--dark);color:var(--onDark);border-color:transparent}
-.avatar{position:relative;aspect-ratio:1;width:100%}
-.avatar canvas{width:100%;height:100%;display:block}
-.avatar .mono{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
-.avatar .mono b{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:96px;letter-spacing:-.02em;background:var(--bg);padding:0 14px;border-radius:20px;line-height:1.1}
-.intro p{color:var(--ink3);font-size:16px;margin-bottom:12px}
-.intro p.hi{color:var(--ink2)}
-.intro p.strong{color:var(--ink);font-weight:500;font-size:17px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;padding-bottom:40px}
+.hero .hello{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink2);margin-bottom:22px;display:inline-flex;gap:10px;align-items:center;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--glass)}
+.hero .hello b{color:var(--g);font-weight:500}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(46px,9.2vw,148px);line-height:.86;letter-spacing:-.045em}
+.hero h1 .l2{display:block;padding-left:5vw}
+.role{margin-top:28px;font-family:'Syne',sans-serif;font-size:clamp(20px,2.6vw,34px);font-weight:600;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.role .x{color:var(--ink3);font-weight:400}
+.swap{display:inline-block;position:relative;min-width:6ch}
+.swap span{display:inline-block;transition:transform .55s cubic-bezier(.7,0,.2,1),opacity .55s,filter .55s}
+.swap span.out{transform:translateY(-60%);opacity:0;filter:blur(8px)}
+.hero p.sub{margin-top:18px}
+.btns{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-size:14.5px;font-weight:500;border:1px solid var(--line);background:var(--glass);transition:.25s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+.btn.pri{background:linear-gradient(90deg,var(--o),#ff9a5c);color:#140800;border:0;font-weight:600}
+.scrollcue{margin-top:60px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);letter-spacing:.2em;display:flex;align-items:center;gap:12px}
+.scrollcue i{width:1px;height:44px;background:linear-gradient(var(--ink3),transparent);position:relative;overflow:hidden}
+.scrollcue i::after{content:"";position:absolute;left:0;top:-20px;width:1px;height:20px;background:var(--o);animation:drop 1.8s infinite}
+@keyframes drop{to{top:44px}}
 
-/* marquee of orgs */
-.orgs{padding:30px 0 10px}
-.orgs .lbl{font-size:14px;font-weight:500;margin-bottom:22px}
-.orgrow{display:flex;gap:18px;flex-wrap:wrap}
-.org{display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);transition:.25s}
-.org:hover{transform:translateY(-3px)}
-.org i{width:40px;height:40px;border-radius:50%;background:var(--dark);color:var(--onDark);display:grid;place-items:center;font-style:normal;font-weight:600;font-size:14px}
-.org small{display:block;color:var(--ink3);font-size:12px;line-height:1.2}
-.org span{font-size:14.5px;font-weight:500;line-height:1.2}
+/* ticker */
+.ticker{position:relative;z-index:2;border-block:1px solid var(--line);background:rgba(7,7,12,.7);backdrop-filter:blur(8px);overflow:hidden;white-space:nowrap}
+.ticker .track{display:inline-flex;gap:48px;padding:14px 0;animation:tick 45s linear infinite}
+.ticker span{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink2)}
+.ticker b{color:var(--ink);font-weight:500;margin-right:6px}
+.ticker .up{color:var(--g)}.ticker .dn{color:var(--m)}
+@keyframes tick{to{transform:translateX(-50%)}}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}
-.stat{background:var(--card);border-radius:var(--r);padding:24px;border:1px solid var(--line)}
-.stat b{font-size:34px;font-weight:600;letter-spacing:-.03em;display:block}
-.stat span{color:var(--ink2);font-size:14px}
+/* outline parallax words */
+.outline{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(70px,14vw,220px);line-height:.9;letter-spacing:-.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);pointer-events:none;user-select:none;will-change:transform}
 
-/* ---------- work ---------- */
-.case{margin-top:50px}
-.case h3{font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-.02em;max-width:760px;line-height:1.2;margin-bottom:6px}
-.case .tags{color:var(--ink3);font-size:13px;margin-bottom:22px}
-.case-top{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}
-.media{border-radius:var(--r);min-height:360px;position:relative;overflow:hidden;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
-.media.g1{background:linear-gradient(160deg,#2b3a55 0%,#6b5b95 45%,#c98b6b 100%)}
-.media.g2{background:linear-gradient(160deg,#3a1c1c 0%,#8a2c2c 45%,#d9a441 100%)}
-.media .foot{display:flex;justify-content:space-between;font-size:13px;opacity:.9;margin-top:6px}
-.media .ttl{font-size:15px;font-weight:500}
-.mock{position:absolute;top:24px;left:24px;right:24px;bottom:96px;border-radius:14px;background:rgba(10,10,14,.82);box-shadow:0 20px 50px rgba(0,0,0,.35);padding:16px;font-size:11px;color:#cfcfd6;overflow:hidden;transition:transform .5s}
-.media:hover .mock{transform:translateY(-6px) scale(1.01)}
-.mock .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.bars{display:flex;align-items:flex-end;gap:6px;height:90px;margin:12px 0}
-.bars i{flex:1;background:linear-gradient(#ffb36b,#ff6a3d);border-radius:4px 4px 0 0;transform-origin:bottom;animation:grow 1.4s cubic-bezier(.2,.8,.2,1) both}
-@keyframes grow{from{transform:scaleY(0)}}
-.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10px;background:rgba(255,255,255,.1);margin-right:4px}
-.chip.ok{background:rgba(80,200,120,.2);color:#8ff0b0}
-.chip.warn{background:rgba(255,170,60,.2);color:#ffc98a}
-.desc{background:var(--card);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;border:1px solid var(--line)}
-.desc .quote{background:var(--card2);border-radius:16px;padding:22px;font-size:15.5px;line-height:1.6;flex:1}
-.desc .role{padding:18px 8px 6px;color:var(--ink3);font-size:13.5px}
-.desc .role b{display:block;color:var(--ink);font-weight:400;font-size:14.5px;margin-top:6px}
-.desc .btn{align-self:flex-end;margin:10px 4px 4px}
-.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
-.feat{background:var(--card);border-radius:var(--r);padding:20px;min-height:200px;display:flex;flex-direction:column;border:1px solid var(--line);transition:.25s}
-.feat:hover{background:var(--card2);transform:translateY(-3px)}
-.feat svg{width:20px;height:20px;color:var(--ink2)}
-.feat h4{margin-top:auto;font-weight:400;color:var(--ink2);font-size:14.5px;margin-bottom:6px}
-.feat p{font-size:13.5px;color:var(--ink)}
-.feat p b{font-weight:600}
+/* ---------- numbers ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}
+.kpi{padding:26px;position:relative;overflow:hidden}
+.kpi b{font-family:'Syne',sans-serif;font-size:clamp(34px,3.6vw,48px);font-weight:700;letter-spacing:-.03em;display:block;line-height:1.05}
+.kpi span{color:var(--ink2);font-size:13.5px;display:block;margin-top:8px}
+.kpi::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--c,var(--o));opacity:.14;filter:blur(20px)}
+.charts{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;margin-top:14px}
+.chart{padding:26px}
+.chart h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:600;margin-bottom:4px}
+.chart .cap{color:var(--ink3);font-size:12.5px;margin-bottom:20px;font-family:'JetBrains Mono',monospace}
+.hbar{display:grid;grid-template-columns:150px 1fr 56px;gap:12px;align-items:center;margin-bottom:12px;font-size:13px}
+.hbar .t{color:var(--ink2)}
+.hbar .tr{height:10px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.hbar .f{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--o),var(--l));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.hbar .f.p{background:repeating-linear-gradient(45deg,var(--m) 0 6px,rgba(94,234,212,.55) 6px 12px)}
+.hbar .v{font-family:'JetBrains Mono',monospace;text-align:right}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink3);margin-top:14px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.rings{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.ring{display:flex;align-items:center;gap:14px}
+.ring svg{width:84px;height:84px;flex:none;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:8}
+.ring .bgc{stroke:rgba(255,255,255,.07)}
+.ring .fg{stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+.ring b{font-family:'Syne',sans-serif;font-size:22px;display:block;line-height:1.1}
+.ring span{font-size:12.5px;color:var(--ink2)}
+.career{padding:26px;margin-top:14px}
+.career svg{width:100%;height:280px;overflow:visible}
+.career .tip{position:absolute;pointer-events:none;background:#15151f;border:1px solid var(--line);padding:8px 12px;border-radius:10px;font-size:12.5px;max-width:240px;opacity:0;transition:opacity .15s;z-index:5}
+.career .tip b{color:var(--o);font-family:'JetBrains Mono',monospace;font-size:11px;display:block}
+
+/* ---------- case studies ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 20px}
+.tab{font:inherit;font-size:14px;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--ink2);cursor:pointer;transition:.25s;display:flex;gap:8px;align-items:center}
+.tab small{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink3)}
+.tab:hover{color:var(--ink)}
+.tab.on{background:var(--ink);color:#000;border-color:var(--ink)}
+.tab.on small{color:#555}
+.cs{display:grid;grid-template-columns:380px 1fr;gap:14px;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+.cs-side{padding:28px;align-self:start;position:sticky;top:90px}
+.cs-side .co{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--o);letter-spacing:.08em;text-transform:uppercase}
+.cs-side h3{font-family:'Syne',sans-serif;font-size:28px;line-height:1.1;letter-spacing:-.02em;margin:10px 0 14px}
+.cs-side .meta{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px;margin:18px 0;padding:16px 0;border-block:1px solid var(--line)}
+.cs-side .meta dt{color:var(--ink3)}
+.cs-side h4{font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);margin:18px 0 8px}
+.cs-side p{font-size:14.5px;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:12px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink2)}
+.cs-main{display:flex;flex-direction:column;gap:14px}
+.tree{padding:28px}
+.tree h4,.featgrid-h,.cs-chart h4{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
+.tree .root{display:inline-flex;gap:10px;align-items:center;padding:10px 16px;border-radius:14px;background:linear-gradient(90deg,rgba(255,122,61,.18),rgba(167,139,250,.18));border:1px solid rgba(255,122,61,.35);font-weight:600;font-family:'Syne',sans-serif}
+.tree ul{list-style:none;margin:6px 0 0 22px;padding-left:22px;border-left:1px dashed rgba(255,255,255,.18)}
+.tree li{position:relative;padding:10px 0 2px}
+.tree li::before{content:"";position:absolute;left:-22px;top:24px;width:18px;border-top:1px dashed rgba(255,255,255,.18)}
+.tree .mod{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:14.5px;cursor:pointer}
+.tree .mod em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:2px 8px;border-radius:99px;background:rgba(94,234,212,.12);color:var(--m)}
+.tree .feats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tree .feats span{font-size:12.5px;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.05);color:var(--ink2);border:1px solid var(--line)}
+.featgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fc{padding:22px;transition:transform .3s,border-color .3s;transform-style:preserve-3d}
+.fc:hover{border-color:rgba(255,122,61,.4)}
+.fc .n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3)}
+.fc b{font-family:'Syne',sans-serif;font-size:30px;letter-spacing:-.02em;display:block;margin:12px 0 2px;line-height:1.05}
+.fc h5{font-size:14.5px;font-weight:600;margin-bottom:6px}
+.fc p{font-size:13px;color:var(--ink2)}
+.fc .tag{display:inline-block;margin-top:10px;font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--y);border:1px solid rgba(252,211,77,.3);border-radius:99px;padding:2px 8px}
+.cs-chart{padding:28px}
+.cs-foot{padding:20px 28px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13.5px;color:var(--ink2)}
+
+/* ---------- experience ---------- */
+.xp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px}
+.xcard{padding:30px}
+.xcard .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.xcard h3{font-family:'Syne',sans-serif;font-size:26px;letter-spacing:-.02em}
+.xcard .when{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink3)}
+.xcard .ttl{color:var(--o);font-size:14px;margin:4px 0 18px}
+.acc{border-top:1px solid var(--line)}
+.acc button{all:unset;cursor:pointer;display:flex;justify-content:space-between;width:100%;padding:14px 0;font-weight:600;font-size:14.5px}
+.acc button span{font-family:'JetBrains Mono',monospace;color:var(--ink3);transition:transform .3s}
+.acc.open button span{transform:rotate(45deg)}
+.acc ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .5s ease}
+.acc.open ul{max-height:900px}
+.acc li{font-size:13.5px;color:var(--ink2);padding:6px 0 6px 18px;position:relative}
+.acc li::before{content:"";position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--o)}
+.acc li b{color:var(--ink);font-weight:600}
+.acc li:last-child{padding-bottom:16px}
+
+/* ---------- competitions ---------- */
+.comps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
+.comp{padding:28px;position:relative;overflow:hidden;transition:transform .3s}
+.comp .badge{position:absolute;top:22px;right:22px;font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid}
+.comp h3{font-family:'Syne',sans-serif;font-size:24px;letter-spacing:-.02em;padding-right:120px}
+.comp .host{color:var(--ink3);font-size:13px;font-family:'JetBrains Mono',monospace;margin:4px 0 14px}
+.comp p{color:var(--ink2);font-size:14px;min-height:44px}
+.stages{display:flex;align-items:center;margin-top:24px}
+.stg{flex:1;position:relative;text-align:center;font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--ink3);padding-top:22px}
+.stg::before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:rgba(255,255,255,.08)}
+.stg::after{content:"";position:absolute;top:0;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#1a1a26;border:2px solid rgba(255,255,255,.18)}
+.stg.done{color:var(--ink)}
+.stg.done::before{background:var(--c)}
+.stg.done::after{background:var(--c);border-color:var(--c);box-shadow:0 0 14px var(--c)}
+.stg:first-child::before{left:50%}.stg:last-child::before{right:50%}
+.field{margin-top:18px;font-size:12.5px;color:var(--ink3);display:flex;gap:10px;align-items:center}
+.field .bar{flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.06);overflow:hidden}
+.field .bar i{display:block;height:100%;background:var(--c);width:0;transition:width 1.4s}
+.sims{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+.sim{padding:22px;display:flex;gap:16px;align-items:flex-start}
+.sim .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-family:'Syne';font-weight:700;flex:none}
+.sim h4{font-size:15px}
+.sim p{font-size:13px;color:var(--ink2);margin-top:4px}
 
 /* ---------- projects ---------- */
-.projs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.proj .scr{height:200px;border-radius:var(--r);background:#0e0e10;position:relative;overflow:hidden;display:grid;place-items:center}
-.proj .scr canvas{position:absolute;inset:0;width:100%;height:100%}
-.proj .scr em{position:relative;color:#fff;font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;background:rgba(0,0,0,.5);padding:6px 12px;border-radius:999px}
-.proj h4{font-size:15px;font-weight:600;margin:16px 0 6px}
-.proj p{font-size:13.5px;color:var(--ink2)}
-.proj .yr{font-size:12px;color:var(--ink3);margin-top:8px;display:block}
+.projs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
+.proj{padding:0;overflow:hidden;transition:transform .2s;transform-style:preserve-3d}
+.proj .vis{height:200px;position:relative;background:#0a0a12;border-bottom:1px solid var(--line)}
+.proj canvas{position:absolute;inset:0;width:100%;height:100%}
+.proj .body{padding:24px}
+.proj .yr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3)}
+.proj h3{font-family:'Syne',sans-serif;font-size:21px;margin:6px 0 10px;letter-spacing:-.01em}
+.proj ul{list-style:none}
+.proj li{font-size:13.5px;color:var(--ink2);padding:3px 0 3px 16px;position:relative}
+.proj li::before{content:"→";position:absolute;left:0;color:var(--o);font-size:12px}
+.proj li b{color:var(--ink)}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.cert{padding:20px;display:flex;flex-direction:column;gap:6px;transition:.3s}
+.cert:hover{background:var(--glass2);transform:translateY(-4px)}
+.cert .iss{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3)}
+.cert h4{font-size:15px;line-height:1.3}
+.cert p{font-size:12.5px;color:var(--ink2)}
+.cert .seal{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;font-family:'Syne';margin-bottom:6px}
 
-/* awards */
-.awards{margin-top:40px;border-top:1px solid var(--line)}
-.aw{display:grid;grid-template-columns:140px 1fr 70px;gap:20px;padding:18px 4px;border-bottom:1px solid var(--line);align-items:baseline;transition:.2s}
-.aw:hover{background:var(--card);padding-left:14px}
-.aw .k{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3)}
-.aw .t{font-size:15px}
-.aw .t b{font-weight:600}
-.aw .y{text-align:right;color:var(--ink3);font-size:13px}
+/* ---------- academics ---------- */
+.acad{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px}
+.edu{padding:28px}
+.edu .row{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.edu .row:last-child{border:0}
+.edu .row b{font-family:'Syne',sans-serif;font-size:18px}
+.edu .row span{color:var(--ink2);font-size:13.5px}
+.edu .row em{font-style:normal;font-family:'JetBrains Mono',monospace;color:var(--o);text-align:right;font-size:14px}
+.cloud{display:flex;flex-wrap:wrap;gap:8px}
+.cloud span{padding:8px 14px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:rgba(255,255,255,.035);transition:.3s;cursor:default}
+.cloud span:hover{background:var(--ink);color:#000;transform:rotate(-2deg) scale(1.05)}
+.aclist{list-style:none;margin-top:14px}
+.aclist li{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
+.aclist li span{font-family:'JetBrains Mono',monospace;color:var(--ink3);font-size:12px}
+.aclist li b{color:var(--ink)}
+
+/* ---------- beyond ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:44px}
+.bx{padding:24px;position:relative;overflow:hidden}
+.bx h4{font-family:'Syne',sans-serif;font-size:19px;margin-bottom:10px}
+.bx .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--o);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;display:block}
+.bx ul{list-style:none}
+.bx li{font-size:13.5px;color:var(--ink2);padding:5px 0;border-bottom:1px dashed var(--line)}
+.bx li:last-child{border:0}
+.bx li b{color:var(--ink)}
+.bx .em{font-size:44px;line-height:1;margin-bottom:12px;display:block}
+.b1{grid-column:span 3}.b2{grid-column:span 3}.b3{grid-column:span 2}.b4{grid-column:span 2}.b5{grid-column:span 2}
+.hob{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.hob .bx{text-align:center;padding:30px 16px;transition:.3s}
+.hob .bx:hover{transform:translateY(-6px) rotate(-1.5deg);background:var(--glass2)}
+.hob .bx span{font-size:13.5px;color:var(--ink2)}
 
 /* ---------- ask ---------- */
-.ask{min-height:70vh;display:flex;flex-direction:column;justify-content:center}
-.ask h2{font-size:clamp(26px,3vw,34px);font-weight:500;letter-spacing:-.02em;margin-bottom:28px}
-.chat{max-width:720px;margin:0 auto;width:100%}
-.log{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;max-height:340px;overflow:auto;padding:4px}
-.msg{max-width:85%;padding:12px 16px;border-radius:18px;font-size:14.5px;animation:pop .35s ease both}
-.msg.me{align-self:flex-end;background:var(--dark);color:var(--onDark);border-bottom-right-radius:6px}
-.msg.ai{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:6px}
-@keyframes pop{from{opacity:0;transform:translateY(8px)}}
-.box{position:relative;border-radius:20px;padding:2px;background:linear-gradient(90deg,var(--line),#c9b8ff,#ffc4a0,var(--line));background-size:300% 100%;animation:sheen 6s linear infinite}
-@keyframes sheen{to{background-position:300% 0}}
-.box form{display:flex;align-items:center;gap:10px;background:var(--card2);border-radius:18px;padding:10px 10px 10px 18px}
-.box input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:var(--ink);padding:10px 0}
-.box button{width:40px;height:40px;border-radius:50%;border:0;background:var(--dark);color:var(--onDark);cursor:pointer;display:grid;place-items:center}
-.sugs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;justify-content:center}
-.sugs button{font:inherit;font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink2);cursor:pointer;transition:.2s}
-.sugs button:hover{background:var(--card);color:var(--ink)}
-.note{text-align:center;font-size:12px;color:var(--ink3);margin-top:12px}
-
-/* ---------- about ---------- */
-.about-txt h3{font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-.02em;margin:6px 0 14px;max-width:760px;line-height:1.25}
-.about-txt p{color:var(--ink2);max-width:760px;margin-bottom:10px}
-.tiles{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:80px;gap:14px;margin-top:40px}
-.tile{border-radius:var(--r);background:var(--card);overflow:hidden;position:relative;border:1px solid var(--line)}
-.tile canvas{position:absolute;inset:0;width:100%;height:100%}
-.tile .cap{position:absolute;left:16px;bottom:14px;font-size:13px;color:var(--ink);background:color-mix(in srgb,var(--card2) 85%,transparent);padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
-.t1{grid-column:1/5;grid-row:span 3}.t2{grid-column:5/9;grid-row:span 4}.t3{grid-column:10/13;grid-row:span 2}
-.t4{grid-column:3/5;grid-row:span 2}.t5{grid-column:9/13;grid-row:span 3}.t6{grid-column:1/3;grid-row:span 2}
-
-/* journey */
-.journey{margin-top:60px}
-.journey h3{font-size:clamp(24px,2.8vw,32px);font-weight:500;letter-spacing:-.02em;margin-bottom:24px}
-.jrow{display:grid;grid-template-columns:2fr 1.4fr 1.4fr 110px;gap:16px;padding:12px 8px;border-bottom:1px solid var(--line);font-size:14px;transition:.2s}
-.jrow:hover{background:var(--card)}
-.jrow b{font-weight:600}
-.jrow span{color:var(--ink2)}
-.jrow span:last-child{text-align:right;color:var(--ink3)}
-
-/* ---------- stack ---------- */
-.stack-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:36px}
-.sk{min-width:0;overflow-wrap:anywhere;aspect-ratio:1.3;border-radius:18px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-size:12.5px;color:var(--ink2);text-align:center;padding:8px;transition:.25s}
-.sk:hover{background:var(--card2);color:var(--ink);transform:translateY(-3px) rotate(-1deg)}
-.sk b{font-size:22px;color:var(--ink);font-weight:600;letter-spacing:-.03em}
-.graph{margin-top:30px;height:440px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg2);position:relative;overflow:hidden}
-.graph svg{width:100%;height:100%}
-.graph .hint{position:absolute;left:18px;top:14px;font-size:12px;color:var(--ink3)}
+.chat{max-width:780px;margin:40px auto 0;padding:24px}
+.log{display:flex;flex-direction:column;gap:12px;max-height:360px;overflow:auto;margin-bottom:14px;padding:4px}
+.msg{max-width:86%;padding:12px 16px;border-radius:18px;font-size:14.5px;animation:fade .35s ease both}
+.msg.me{align-self:flex-end;background:var(--ink);color:#000;border-bottom-right-radius:6px}
+.msg.ai{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid var(--line);border-bottom-left-radius:6px}
+.inp{display:flex;gap:10px;border-radius:18px;padding:6px 6px 6px 18px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.inp input{flex:1;background:transparent;border:0;outline:0;font:inherit;color:var(--ink);font-size:15px}
+.inp button{border:0;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--o),var(--l));cursor:pointer;color:#000;font-size:18px}
+.sugs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.sugs button{font:inherit;font-size:12.5px;padding:7px 13px;border-radius:999px;background:transparent;border:1px solid var(--line);color:var(--ink2);cursor:pointer}
+.sugs button:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
+.note{font-size:11.5px;color:var(--ink3);margin-top:12px;font-family:'JetBrains Mono',monospace}
 
 /* footer */
-footer{padding:100px 0 60px;text-align:center}
-footer h2{font-size:clamp(36px,6vw,72px);font-weight:500;letter-spacing:-.04em;line-height:1}
-footer p{color:var(--ink2);margin:18px 0 28px}
-footer .small{margin-top:60px;font-size:12px;color:var(--ink3)}
+footer{padding:140px 0 50px;text-align:center}
+footer h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,9vw,130px);line-height:.9;letter-spacing:-.045em}
+footer p{color:var(--ink2);margin:22px 0 32px}
+.fl{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:100px;padding-top:24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink3);font-family:'JetBrains Mono',monospace}
+.fl a{color:var(--ink2);border-bottom:1px dashed var(--ink3)}
 
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
 
-@media (max-width:900px){
-  .pill a .lbl{display:none}
-  .pill a{padding:9px 11px}
-  .cta{padding:5px 14px 5px 5px;font-size:13px}
-  .cta .orb{width:28px;height:28px}
-  .hero-grid{grid-template-columns:1fr;text-align:left}
-  .avatar{max-width:260px;margin:0 auto;order:-1}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .case-top{grid-template-columns:1fr}
-  .feats{grid-template-columns:repeat(2,1fr)}
-  .projs{grid-template-columns:1fr}
-  .stack-grid{grid-template-columns:repeat(3,1fr)}
-  .tiles{grid-template-columns:repeat(6,1fr);grid-auto-rows:70px}
-  .t1{grid-column:1/4;grid-row:span 3}.t2{grid-column:4/7;grid-row:span 3}.t3{grid-column:1/3;grid-row:span 2}
-  .t4{grid-column:3/7;grid-row:span 2}.t5{grid-column:1/7;grid-row:span 2}.t6{display:none}
-  .jrow{grid-template-columns:1fr 80px}.jrow span:nth-child(2),.jrow span:nth-child(3){display:none}
-  .aw{grid-template-columns:1fr 50px}.aw .k{grid-column:1/-1}
-  .ticks{display:none}
-  .theme{top:auto;bottom:20px;right:16px}
+@media (max-width:960px){
+  .nav a:not(.cta):not(.keep){display:none}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .charts,.xp,.acad,.projs,.comps,.sims{grid-template-columns:1fr}
+  .cs{grid-template-columns:1fr}
+  .cs-side{position:relative;top:0}
+  .featgrid{grid-template-columns:1fr 1fr}
+  .certs{grid-template-columns:1fr 1fr}
+  .bento{grid-template-columns:1fr 1fr}
+  .b1,.b2{grid-column:span 2}.b3,.b4,.b5{grid-column:span 1}
+  .hob{grid-template-columns:repeat(2,1fr)}
+  .hero h1 .l2{padding-left:0}
+  #cur{display:none}
 }
-@media (max-width:520px){
-  .pill a.hide-sm{display:none}
-  .feats{grid-template-columns:1fr}
-  .wrap{padding:0 16px}
+@media (max-width:560px){
+  .wrap{padding-left:16px;padding-right:16px}
+  #three{opacity:.55}
+  .featgrid,.certs{grid-template-columns:1fr}
+  .b3,.b4,.b5{grid-column:span 2}
+  .hbar{grid-template-columns:110px 1fr 46px;font-size:12px}
+  .rings{grid-template-columns:1fr}
+  .comp h3{padding-right:0;margin-top:28px}
+  .stg{font-size:9px}
+  section{padding-top:100px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div id="prog"></div>
+<div id="cur"></div>
+<canvas id="three"></canvas>
 
-<!-- nav -->
-<nav class="nav">
-  <div class="pill" id="pill">
-    <a href="#home" data-s="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg><span class="lbl">Home</span></a>
-    <a href="#work" data-s="work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg><span class="lbl">Work</span></a>
-    <a href="#projects" data-s="projects" class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"/></svg><span class="lbl">Projects</span></a>
-    <a href="#about" data-s="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg><span class="lbl">About</span></a>
-    <a href="#stack" data-s="stack" class="hide-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><span class="lbl">Stack</span></a>
-  </div>
-  <a class="cta" href="https://www.linkedin.com/in/apoorvachandarpadmanaban" target="_blank" rel="noopener"><span class="orb"></span>Let's Connect</a>
+<nav class="nav" id="nav">
+  <a href="#top" data-s="top" class="keep">AC</a>
+  <a href="#numbers" data-s="numbers">Numbers</a>
+  <a href="#cases" data-s="cases">Case studies</a>
+  <a href="#experience" data-s="experience">Experience</a>
+  <a href="#competitions" data-s="competitions">Competitions</a>
+  <a href="#projects" data-s="projects">Projects</a>
+  <a href="#ask" data-s="ask">Ask</a>
+  <a class="cta" href="https://www.linkedin.com/in/apoorvachandarpadmanaban" target="_blank" rel="noopener"><i></i>Connect</a>
 </nav>
-<button class="theme" id="theme" aria-label="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
 
-<div class="ticks" id="ticks">
-  <a href="#home" data-s="home"><span>Home</span></a>
-  <a href="#work" data-s="work"><span>Work</span></a>
-  <a href="#projects" data-s="projects"><span>Projects & Wins</span></a>
-  <a href="#ask" data-s="ask"><span>Ask me</span></a>
-  <a href="#about" data-s="about"><span>About</span></a>
-  <a href="#stack" data-s="stack"><span>Stack</span></a>
-</div>
-
-<!-- hero -->
-<section class="hero" id="home">
-  <div class="wrap" style="width:100%">
-    <div class="hero-grid">
-      <div>
-        <div class="rot"><span id="rot">Aspiring Product Manager</span></div>
-        <div class="btns">
-          <a class="btn" href="#about">About me</a>
-          <a class="btn" href="#work">See my work <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
-        </div>
-      </div>
-      <div class="avatar"><canvas id="heroDots"></canvas><div class="mono"><b>AC</b></div></div>
-      <div class="intro">
-        <p class="hi">Hi, I'm Apoorva</p>
-        <p>I turn business problems into products and technology roadmaps</p>
-        <p class="strong">Product management & technology consulting</p>
-        <p>MBA candidate at IIM Kozhikode. I spent three years building enterprise products at Wells Fargo and then worked on Smart Plant digitalisation at Wipro Consulting.</p>
-      </div>
-    </div>
-
-    <div class="orgs reveal">
-      <div class="lbl">Built and led initiatives at</div>
-      <div class="orgrow">
-        <div class="org"><i>W</i><div><span>Wipro Consulting</span><small>WiSE Intern · PPI</small></div></div>
-        <div class="org"><i>WF</i><div><span>Wells Fargo</span><small>Software Engineer</small></div></div>
-        <div class="org"><i>IK</i><div><span>IIM Kozhikode</span><small>MBA '25–27</small></div></div>
-        <div class="org"><i>MIT</i><div><span>MIT, Anna University</span><small>B.E. '18–22</small></div></div>
-        <div class="org"><i>Sp</i><div><span>Springer</span><small>Published author</small></div></div>
-      </div>
-    </div>
-
-    <div class="stats reveal">
-      <div class="stat"><b data-count="1.5" data-pre="$" data-suf="M/yr">$1.5M/yr</b><span>projected savings from a prescriptive maintenance proposal</span></div>
-      <div class="stat"><b data-count="5000" data-suf="+">5,000+</b><span>daily requests handled across 12+ apps with 100% throughput</span></div>
-      <div class="stat"><b data-count="2000" data-pre="#1 of " data-suf="+">#1 of 2,000+</b><span>entries to win the company-wide Shark Tank</span></div>
-      <div class="stat"><b data-count="34" data-suf=" mo">34 mo</b><span>of full-time work experience</span></div>
-    </div>
+<header class="hero wrap" id="top">
+  <div><span class="hello"><b>●</b> MBA '27 · IIM Kozhikode · open to product & tech consulting roles</span></div>
+  <h1 class="disp" data-speed="-0.15">Apoorva<span class="l2 grad">Chandar.</span></h1>
+  <div class="role"><span>Product</span><span class="x">×</span><span>Tech Consulting</span><span class="x">/</span><span class="swap"><span id="swap">ex-Wells Fargo engineer</span></span></div>
+  <p class="sub">I've written production code and built business cases. I spent 34 months building banking operations tech at Wells Fargo, worked on Smart Plant digitalisation at Wipro Consulting, and I'm now studying how to turn technology into products people use.</p>
+  <div class="btns">
+    <a class="btn pri" href="#cases">Explore case studies →</a>
+    <a class="btn" href="#numbers">See the numbers</a>
+    <a class="btn" href="#ask">Ask me anything</a>
   </div>
-</section>
+  <div class="scrollcue"><i></i>SCROLL · THE OBJECTS MOVE AT DIFFERENT DEPTHS</div>
+</header>
 
-<!-- work -->
-<section id="work">
+<div class="ticker"><div class="track" id="track"></div></div>
+
+<main>
+<!-- ================= NUMBERS ================= -->
+<section id="numbers">
+  <div class="outline" data-x="-0.25" style="margin-bottom:-40px">IMPACT · IMPACT · IMPACT</div>
   <div class="wrap">
-    <span class="eyebrow">Selected work</span>
-    <h2 class="sec reveal">Case studies</h2>
-    <p class="lead reveal">Two settings: an energy & manufacturing digitalisation program, and operations technology at a global bank.</p>
+    <div class="kicker">01 · By the numbers</div>
+    <h2 class="big rv">Results I can<br><span class="grad">put a number on.</span></h2>
+    <p class="sub rv">Every figure here comes straight from my CV.</p>
 
-    <!-- case 1 -->
-    <div class="case reveal">
-      <h3>Building the business case for a Smart Plant, one quantified use case at a time.</h3>
-      <div class="tags">Wipro Consulting · Energy, Manufacturing & Resources · Apr – Jun 2026</div>
-      <div class="case-top">
-        <div class="media g1">
-          <div class="mock">
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><b style="color:#fff;font-size:12px">Program variance · L3/L4</b><span class="chip">Power BI</span></div>
-            <div class="bars"><i style="height:62%;animation-delay:.05s"></i><i style="height:80%;animation-delay:.1s"></i><i style="height:45%;animation-delay:.15s"></i><i style="height:90%;animation-delay:.2s"></i><i style="height:70%;animation-delay:.25s"></i><i style="height:55%;animation-delay:.3s"></i><i style="height:85%;animation-delay:.35s"></i><i style="height:66%;animation-delay:.4s"></i></div>
-            <div class="row"><span>Deliverables analysed</span><span>50,000+</span></div>
-            <div class="row"><span>Prescriptive maintenance</span><span><span class="chip ok">−40% downtime</span></span></div>
-            <div class="row"><span>Clamp-on flow metering</span><span><span class="chip warn">2%+ pump energy</span></span></div>
-            <div class="row"><span>Integration · GE APM / PI Historian</span><span class="chip">Compatible</span></div>
-          </div>
-          <div class="ttl">Smart Plant digitalisation</div>
-          <div class="foot"><span>Consulting · Energy</span><span>Year: 2026</span></div>
-        </div>
-        <div class="desc">
-          <div class="quote">I supported a digitalisation and Smart Plant program, identifying use cases, running the analytics and evaluating solutions. I backed each recommendation with vendor benchmarks and a measurable outcome.</div>
-          <div class="role">Role: WiSE Consulting Intern <b>Use-case identification, analytics, solution evaluation and architecture recommendations</b></div>
-          <a class="btn dk" href="#ask">Ask about this <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
+    <div class="kpis">
+      <div class="kpi glass rv" style="--c:var(--o)"><b data-n="1.5" data-p="$" data-s="M/yr">$1.5M/yr</b><span>projected savings from a prescriptive maintenance proposal at Wipro</span></div>
+      <div class="kpi glass rv" style="--c:var(--l)"><b data-n="5000" data-s="+">5,000+</b><span>daily requests handled across 12+ apps with 100% throughput</span></div>
+      <div class="kpi glass rv" style="--c:var(--m)"><b data-n="0.36" data-s="M+">0.36M+</b><span>US users a year projected to move from desktop to mobile</span></div>
+      <div class="kpi glass rv" style="--c:var(--y)"><b data-n="10" data-s="M+">10M+</b><span>rows ETL-processed with 100% data integrity, with 15+ sensitive fields removed</span></div>
+    </div>
+
+    <div class="charts">
+      <div class="chart glass rv">
+        <h3>Impact by initiative</h3>
+        <div class="cap">% change · solid = delivered · striped = projected</div>
+        <div id="impact"></div>
+        <div class="legend"><span><i style="background:linear-gradient(90deg,var(--o),var(--l))"></i>Delivered</span><span><i style="background:var(--m)"></i>Projected / proposed</span></div>
       </div>
-      <div class="feats">
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><h4>Benchmarked first.</h4><p>Compared <b>9 industry implementations</b> with vendors to back each recommendation with numbers.</p></div>
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><h4>Downtime, down.</h4><p>A prescriptive maintenance proposal projected to cut downtime by <b>40%</b> and save <b>$1.5M a year</b>.</p></div>
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg><h4>Energy that shows up.</h4><p>Found <b>2%+ pump energy savings</b> through clamp-on flow measurement.</p></div>
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4a3 3 0 013 3V14M14 17.5h-4a3 3 0 01-3-3V10"/></svg><h4>Integration-led.</h4><p>Recommended an architecture built for compatibility with <b>GE APM</b> and <b>PI Historian</b>.</p></div>
+      <div class="chart glass rv">
+        <h3>Academic record</h3>
+        <div class="cap">from school to engineering degree</div>
+        <div class="rings" id="rings"></div>
       </div>
     </div>
 
-    <!-- case 2 -->
-    <div class="case reveal" style="margin-top:90px">
-      <h3>Keeping 12+ critical operations apps running at 5,000 requests a day, with zero dropped.</h3>
-      <div class="tags">Wells Fargo · Technology for the Chief Operating Office · Aug 2022 – Jun 2025</div>
-      <div class="case-top">
-        <div class="media g2">
-          <div class="mock" id="feed">
-            <div style="display:flex;justify-content:space-between;margin-bottom:8px"><b style="color:#fff;font-size:12px">Request stream · live</b><span class="chip">PEGA × Kafka</span></div>
-            <div id="feedRows"></div>
-          </div>
-          <div class="ttl">Operations utility platform</div>
-          <div class="foot"><span>Enterprise · Banking</span><span>2022 – 2025</span></div>
-        </div>
-        <div class="desc">
-          <div class="quote">As a software engineer, I built a PEGA and Kafka utility that processes requests across 12+ apps with full throughput. As a program associate, I built forecasting dashboards and failure monitoring that cut business escalations by 70%.</div>
-          <div class="role">Role: Software Engineer → Program Associate <b>Engineering, stakeholder alignment, prototyping and reporting</b></div>
-          <a class="btn dk" href="#ask">Ask about this <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
+    <div class="career glass rv" style="position:relative">
+      <h3 class="disp" style="font-size:20px;font-weight:600">Career chart <span class="mono" style="font-size:12px;color:var(--g)">▲ ACHN · cumulative milestones</span></h3>
+      <div class="mono" style="color:var(--ink3);font-size:12.5px;margin-bottom:10px">Drawn like a stock chart. Hover a point to see the milestone.</div>
+      <svg id="career"></svg>
+      <div class="tip" id="tip"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE STUDIES ================= -->
+<section id="cases">
+  <div class="outline" data-x="0.25" style="text-align:right;margin-bottom:-40px">PRODUCT → FEATURES → IMPACT</div>
+  <div class="wrap">
+    <div class="kicker">02 · Case studies</div>
+    <h2 class="big rv">Product <span class="grad">teardowns.</span></h2>
+    <p class="sub rv">Each case is broken down the way a PM would: the problem, who it's for, the product split into modules and features, and the measured impact.</p>
+    <div class="tabs" id="tabs"></div>
+    <div id="case"></div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="kicker">03 · Experience</div>
+    <h2 class="big rv">34 months in industry,<br><span class="grad">plus one consulting summer.</span></h2>
+    <div class="xp">
+      <div class="xcard glass rv">
+        <div class="top"><h3>Wipro Consulting</h3><span class="when">APR '26 – JUN '26</span></div>
+        <div class="ttl">WiSE Consulting Intern · Energy, Manufacturing & Resources · <b>PPI</b></div>
+        <div class="acc open"><button>Project details <span>+</span></button><ul>
+          <li>Supported a <b>Digitalisation & Smart Plant</b> program through solution evaluation, use-case identification and analytics</li>
+          <li>Evaluated <b>3 priority digital use cases</b> using a <b>6-step vendor framework</b> and weighted scorecards</li>
+          <li>Benchmarked <b>9 industry implementations</b> with vendors to validate recommendations with quantifiable outcomes</li>
+          <li>Developed a reusable <b>MPP → Power BI</b> dashboard that replaced manual navigation with interactive monitoring</li>
+        </ul></div>
+        <div class="acc"><button>Initiatives <span>+</span></button><ul>
+          <li>Evaluated <b>6 new digital use cases</b> aligned with the transformation roadmap, each with quantifiable business impact for DSP</li>
+          <li>Analysed <b>50,000+ L3/L4 deliverables</b>, AC% and CT% work units and project variance in Power BI</li>
+          <li>Recommended an integration-led architecture prioritising compatibility with <b>GE APM</b> and <b>PI Historian</b></li>
+        </ul></div>
+        <div class="acc"><button>Achievements <span>+</span></button><ul>
+          <li>Projected a <b>40% cut in unplanned downtime</b> and <b>$1.5M/yr in savings</b> through a prescriptive maintenance proposal</li>
+          <li>Identified <b>2%+ pump energy savings</b> through clamp-on flow measurement</li>
+          <li>Built a reusable dashboard that turns <b>MPP Excel dumps</b> into insights without reconfiguration</li>
+        </ul></div>
       </div>
-      <div class="feats">
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><h4>MVP in 2 months.</h4><p>Aligned <b>5+ stakeholders</b> and prototyped a simpler process in PEGA.</p></div>
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 9v4M12 17h.01M10.3 3.9L2 18a2 2 0 001.7 3h16.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg><h4>Fewer fires.</h4><p>A failure-monitoring utility cut business escalations by <b>70%</b>.</p></div>
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg><h4>Forecasts people trust.</h4><p>Predictive <b>Tableau</b> dashboards made financial forecasts more accurate.</p></div>
-        <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h4>One click, not five.</h4><p>Single-click dashboards saved <b>30+ hours a year</b> across modules.</p></div>
+      <div class="xcard glass rv">
+        <div class="top"><h3>Wells Fargo</h3><span class="when">AUG '22 – JUN '25</span></div>
+        <div class="ttl">Software Engineer & Program Associate · Technology for the Chief Operating Office</div>
+        <div class="acc open"><button>Software Engineer <span>+</span></button><ul>
+          <li>Handled <b>5,000+ daily requests</b> in 12+ apps with <b>100% throughput</b> by building a utility with PEGA and Kafka</li>
+          <li>Delivered an <b>MVP in 2 months</b> by aligning 5+ stakeholders and prototyping a simpler process in PEGA</li>
+          <li>Managed <b>10+ Kafka streams</b>, leading design and deployment of automation across critical app environments</li>
+          <li>Cut reconciliation effort by <b>55%</b> and saved <b>12+ hrs/month</b> by leading an async transition as a cross-team POC</li>
+          <li>Resolved <b>20+ functional defects</b> in engineering and production environments, increasing stability by <b>10%</b></li>
+          <li>Trained <b>3+ juniors</b> through domain certifications so they were contributing live within <b>3 months</b></li>
+        </ul></div>
+        <div class="acc"><button>Program Associate <span>+</span></button><ul>
+          <li>Cut business escalations by <b>70%</b> with a reporting utility that monitors failures in critical processes</li>
+          <li>Owned <b>10+ releases</b>, ensuring deployment readiness across functional modules</li>
+          <li>Ensured <b>100% data integrity</b> while ETL-processing <b>10M+ rows</b>, removing 15+ sensitive fields as regulators required</li>
+          <li>Built predictive <b>Tableau</b> dashboards that made financial forecasts and stakeholder reporting more accurate</li>
+          <li>Saved <b>10+ manual hours a month</b> by automating internal monitoring and auditing</li>
+          <li>Maintained <b>10+ knowledge assets</b> (handbooks and Confluence pages)</li>
+        </ul></div>
+        <div class="acc"><button>Initiatives & achievements <span>+</span></button><ul>
+          <li>Won the company-wide <b>Shark Tank</b> out of <b>2,000+ entries</b> with a desktop-to-mobile shift that had low time-to-market</li>
+          <li>Proposed a channel-shift roadmap projected to move <b>0.36M+ US users</b> a year from desktop to mobile, recognised by business leaders</li>
+          <li>Proposed an <b>offline P2P</b> transaction system, projected to cut server load by 20% and overhead costs by 50%</li>
+          <li>Proposed a <b>GenAI hyper-personalised banking</b> model at an ideation event</li>
+          <li>Boosted <b>CTRs by 20%</b> with persona-based positioning; cut new-joiner training time by <b>40%</b></li>
+          <li>Saved <b>30+ hours a year</b> with single-click dashboards; received the <b>Manager Spotlight Award</b> among 20+ peers</li>
+        </ul></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- projects & wins -->
+<!-- ================= COMPETITIONS ================= -->
+<section id="competitions">
+  <div class="outline" data-x="-0.2" style="margin-bottom:-40px">CASE COMPS · CASE COMPS</div>
+  <div class="wrap">
+    <div class="kicker">04 · Case competitions</div>
+    <h2 class="big rv">How far each<br><span class="grad">competition went.</span></h2>
+    <p class="sub rv">Every case, mapped by the stage it reached.</p>
+    <div class="comps" id="comps"></div>
+    <div class="sims">
+      <div class="sim glass rv"><div class="ic" style="background:rgba(74,222,128,.15);color:var(--g)">BCG</div><div><h4>BCG Strategy Consulting · Job Simulation</h4><p>Delivered strategic recommendations by analysing client data, industry trends and profit levers. Forage, 2025.</p></div></div>
+      <div class="sim glass rv"><div class="ic" style="background:rgba(167,139,250,.15);color:var(--l)">JPM</div><div><h4>JPMorgan Chase Investment Banking · Job Simulation</h4><p>Built a DCF model to value an M&A target, adjusted it for a competitor bid, and picked the ideal target on strategic and financial criteria. Forage, 2025.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
 <section id="projects">
   <div class="wrap">
-    <span class="eyebrow">Projects, research & certifications</span>
-    <h2 class="sec reveal">Projects</h2>
+    <div class="kicker">05 · Projects & certifications</div>
+    <h2 class="big rv">Things I've <span class="grad">built.</span></h2>
     <div class="projs">
-      <div class="proj reveal"><div class="scr"><canvas data-fx="net"></canvas><em>Springer · ERCICA</em></div><h4>Self-learning search engine</h4><p>Research paper published in <i>Advances in Computing</i>, ERCICA 2023. 300+ accesses.</p><span class="yr">2023 · Research</span></div>
-      <div class="proj reveal"><div class="scr"><canvas data-fx="path"></canvas><em>Critical path</em></div><h4>Launch plan in MS Project</h4><p>Mapped an 11-activity critical path and ran resources in parallel, cutting the launch from 52 weeks to 24.</p><span class="yr">2026 · IIM Kozhikode</span></div>
-      <div class="proj reveal"><div class="scr"><canvas data-fx="geo"></canvas><em>Geo events</em></div><h4>Location-based event detection</h4><p>Designed an algorithm that cut pre-processing time by 50% with 80%+ accuracy.</p><span class="yr">2022 · MIT, Anna University</span></div>
+      <div class="proj glass rv tilt"><div class="vis"><canvas data-fx="geo"></canvas></div><div class="body"><span class="yr">2022 · MIT, ANNA UNIVERSITY · 10/10 GRADE</span><h3>Location-Based Event Detection</h3><ul>
+        <li>Processed <b>0.8M+ tweets</b> and built a <b>Trust Network</b> to filter spam and cluster high-value data</li>
+        <li>Cut pre-processing time by <b>50%</b> with <b>80%+ accuracy</b> using a new algorithm</li></ul></div></div>
+      <div class="proj glass rv tilt"><div class="vis"><canvas data-fx="paint"></canvas></div><div class="body"><span class="yr">2021 · MIT, ANNA UNIVERSITY</span><h3>Spatio-Temporal Hand Gesture Painter</h3><ul>
+        <li>Trained <b>OpenCV</b> models on <b>45+ hours</b> of raw video for real-time gesture recognition</li>
+        <li>A hand-tracking canvas: switch colours with gestures over a live feed, built for accessibility</li></ul></div></div>
+      <div class="proj glass rv tilt"><div class="vis"><canvas data-fx="cpm"></canvas></div><div class="body"><span class="yr">2026 · IIM KOZHIKODE</span><h3>Launch plan · MS Project CPM</h3><ul>
+        <li>Built a CPM network of <b>25+ activities</b> and <b>30+ dependencies</b> across marketing and advertising</li>
+        <li>Mapped an <b>11-activity critical path</b> and ran resources in parallel, cutting the launch from <b>52 to 24 weeks</b></li></ul></div></div>
+      <div class="proj glass rv tilt"><div class="vis"><canvas data-fx="net"></canvas></div><div class="body"><span class="yr">2023 · SPRINGER · ERCICA</span><h3>Self-Improving Search Engine</h3><ul>
+        <li>Research paper published in <b>Advances in Computing, ERCICA 2023</b></li>
+        <li><b>300+ accesses</b> on Springer</li></ul></div></div>
     </div>
-
-    <h2 class="sec reveal" style="margin-top:90px">Wins & recognition</h2>
-    <div class="awards reveal">
-      <div class="aw"><span class="k">Corporate</span><span class="t">Won the company-wide <b>Shark Tank</b> out of 2,000+ entries, proposing a desktop-to-mobile shift with low time-to-market</span><span class="y">'22–25</span></div>
-      <div class="aw"><span class="k">Corporate</span><span class="t"><b>Manager Spotlight Award</b> among 20+ peers for speed and accuracy</span><span class="y">'22–25</span></div>
-      <div class="aw"><span class="k">Consulting</span><span class="t">Pre-placement interview offer from <b>Wipro Consulting</b></span><span class="y">2026</span></div>
-      <div class="aw"><span class="k">B-School</span><span class="t">Campus Finalist, <b>Axis Bank MOVES 2026</b>, with an enterprise transformation strategy for 2035</span><span class="y">2026</span></div>
-      <div class="aw"><span class="k">B-School</span><span class="t">Campus Finals, <b>Capgemini L'Innovateur</b> (top 3 teams), with a Data-AI strategy for auto M&A</span><span class="y">2026</span></div>
-      <div class="aw"><span class="k">B-School</span><span class="t">Semi-finalist, <b>Jindal Stainless</b> case competition, among 3,000+ participants</span><span class="y">2026</span></div>
-      <div class="aw"><span class="k">Certification</span><span class="t"><b>Microsoft Azure AI Fundamentals (AI-900)</b>, applied to hyper-personalised banking journeys</span><span class="y">2024</span></div>
-      <div class="aw"><span class="k">Certification</span><span class="t"><b>Pega Certified System Architect (PCSA)</b></span><span class="y">2023</span></div>
-      <div class="aw"><span class="k">Academic</span><span class="t">Top 3 percentile of 0.8M+ students, Tamil Nadu Class XII board exams</span><span class="y">2018</span></div>
-    </div>
+    <div class="certs" id="certs"></div>
   </div>
 </section>
 
-<!-- ask -->
-<section class="ask" id="ask">
+<!-- ================= ACADEMICS ================= -->
+<section id="academics">
+  <div class="outline" data-x="0.2" style="text-align:right;margin-bottom:-40px">LEARNING · LEARNING</div>
   <div class="wrap">
-    <div class="chat">
-      <h2 class="reveal">Ask me anything…</h2>
-      <div class="log" id="log"></div>
-      <div class="box"><form id="askForm"><input id="q" placeholder="Ask about my work or experience…" autocomplete="off"><button aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></form></div>
-      <div class="sugs" id="sugs">
-        <button>What roles are you looking for?</button>
-        <button>What did you do at Wipro?</button>
-        <button>Tell me about Wells Fargo</button>
-        <button>What are your skills?</button>
-        <button>Any awards?</button>
-        <button>What do you do for fun?</button>
+    <div class="kicker">06 · Academics</div>
+    <h2 class="big rv">Engineer, now <span class="grad">MBA.</span></h2>
+    <div class="acad">
+      <div class="edu glass rv">
+        <div class="row"><b>MBA</b><em>'25–27</em><span>Indian Institute of Management Kozhikode</span><span></span></div>
+        <div class="row"><b>B.E. Computer Science</b><em>8.1 / 10</em><span>Madras Institute of Technology, Anna University · First Class · 28 A+ in 37 subjects</span><span class="mono" style="color:var(--ink3);font-size:12px">'18–22</span></div>
+        <div class="row"><b>Class XII</b><em>92.67%</em><span>GRT Mahalakshmi Vidyalaya, Chennai · top 3 %ile of 0.8M+ students</span><span class="mono" style="color:var(--ink3);font-size:12px">'18</span></div>
+        <div class="row"><b>Class X</b><em>92.00%</em><span>GRT Mahalakshmi Vidyalaya, Chennai</span><span class="mono" style="color:var(--ink3);font-size:12px">'16</span></div>
+        <ul class="aclist">
+          <li><span>2018</span><div>Awarded <b>Best Performer</b>: top 5 %ile among 400+ students</div></li>
+          <li><span>2018</span><div>Scored <b>90%+</b> in all 5 subjects in the Class XII boards, including Mathematics and Chemistry</div></li>
+          <li><span>2022</span><div><b>10/10 grade</b> in Project Work for a unique event detection algorithm</div></li>
+        </ul>
       </div>
-      <div class="note">Answers are pre-written from my resume. For anything else, reach out on LinkedIn.</div>
+      <div class="edu glass rv">
+        <h3 class="disp" style="font-size:20px;margin-bottom:6px">MBA coursework</h3>
+        <div class="mono" style="color:var(--ink3);font-size:12px;margin-bottom:18px">16 courses · hover them</div>
+        <div class="cloud" id="cloud"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- about -->
-<section id="about">
+<!-- ================= BEYOND ================= -->
+<section id="beyond">
   <div class="wrap">
-    <div class="about-txt reveal">
-      <span class="eyebrow">About me</span>
-      <h3>An engineer turned MBA who wants to build products people use, and make technology pay off for businesses.</h3>
-      <p>I'm Apoorva, an MBA candidate (Batch 2025–27) at IIM Kozhikode. I spent nearly three years at Wells Fargo shipping systems that kept operations running, and I learned that the hardest part is usually alignment, not code.</p>
-      <p>Now I'm heading toward product management and technology consulting. I like finding the real user problem, prototyping fast and backing each decision with a measurable outcome. Outside work, you'll find me watching football, doing competitive programming, cycling or reading the markets.</p>
+    <div class="kicker">07 · Leadership & beyond</div>
+    <h2 class="big rv">Outside <span class="grad">work.</span></h2>
+    <div class="bento">
+      <div class="bx glass b1 rv"><span class="lbl">MIT, Anna University · 2022</span><h4>Event Coordinator, Prayatna</h4><ul>
+        <li>Ran outreach at <b>10+ colleges</b>, driving <b>2,000+ registrations</b> for the national symposium</li>
+        <li>Conducted a <b>Capture the Flag</b> hackathon for 50+ participants</li>
+        <li>Brought on <b>Brisk Infotech</b> as hackathon sponsor and secured <b>PPIs for the winners</b></li></ul></div>
+      <div class="bx glass b2 rv"><span class="lbl">GRT School · 2017</span><h4>Organizer, Prakasam Prati</h4><ul>
+        <li>Drew <b>500+ students</b> by visiting <b>20+ schools</b> in person</li>
+        <li>Official <b>quizmaster</b> for 50+ participants at the grand finale</li>
+        <li>Coordinated <b>10+ competitions</b> end to end</li></ul></div>
+      <div class="bx glass b3 rv"><span class="lbl">IIM Kozhikode · 2025</span><h4>Students' Placements Committee</h4><ul><li>Elected member</li><li>Helped run the placements drive as part of the junior committee</li></ul></div>
+      <div class="bx glass b4 rv"><span class="lbl">Quizzing & science</span><h4>Competitions</h4><ul><li><b>1st</b> of 100+ · NatQ 2014</li><li><b>Runner-up</b> of 100+ schools · Rotaract Science Talent</li><li><b>Runner-up</b> of 200+ · SciMax expo</li><li>Top 5 %ile · All India GK Exam</li></ul></div>
+      <div class="bx glass b5 rv"><span class="lbl">Social service & sport</span><h4>Off the desk</h4><ul><li>Led an <b>NSS unit</b> on a 7-day rural camp</li><li>Taught <b>20+ school kids</b> through activity-based learning</li><li>U-18 zonal <b>Throwball</b> · U-16 zonal <b>Table Tennis</b></li></ul></div>
     </div>
-    <div class="tiles reveal">
-      <div class="tile t1"><canvas data-fx="dots"></canvas><span class="cap">⚽ Football</span></div>
-      <div class="tile t2"><canvas data-fx="dots"></canvas><span class="cap">💻 Competitive programming</span></div>
-      <div class="tile t3"></div>
-      <div class="tile t4"></div>
-      <div class="tile t5"><canvas data-fx="dots"></canvas><span class="cap">📈 Stock market trading</span></div>
-      <div class="tile t6"><canvas data-fx="dots"></canvas><span class="cap">🚴 Cycling</span></div>
-    </div>
-
-    <div class="journey reveal">
-      <h3>Journey</h3>
-      <div class="jrow"><b>MBA</b><span>IIM Kozhikode</span><span>Kozhikode, India</span><span>2025–27</span></div>
-      <div class="jrow"><b>WiSE Consulting Intern</b><span>Wipro Consulting</span><span>Energy, Mfg & Resources</span><span>2026</span></div>
-      <div class="jrow"><b>Program Associate</b><span>Wells Fargo</span><span>Chief Operating Office</span><span>2024–25</span></div>
-      <div class="jrow"><b>Software Engineer</b><span>Wells Fargo</span><span>Chief Operating Office</span><span>2022–24</span></div>
-      <div class="jrow"><b>B.E. · 8.1/10</b><span>MIT, Anna University</span><span>Chennai, India</span><span>2018–22</span></div>
-      <div class="jrow"><b>Event Coordinator, Prayatna</b><span>MIT, Anna University</span><span>2,000+ registrations</span><span>2022</span></div>
-      <div class="jrow"><b>NSS Unit Lead</b><span>Rural outreach camp</span><span>7-day program</span><span>2020</span></div>
-      <div class="jrow"><b>Class XII · 92.67%</b><span>GRT Mahalakshmi Vidyalaya</span><span>Chennai, India</span><span>2018</span></div>
+    <div class="hob">
+      <div class="bx glass rv"><span class="em">⚽</span><h4>Football</h4><span>a dedicated watcher</span></div>
+      <div class="bx glass rv"><span class="em">⌨️</span><h4>Competitive programming</h4><span>for fun</span></div>
+      <div class="bx glass rv"><span class="em">🚴</span><h4>Cycling</h4><span>clearing my head</span></div>
+      <div class="bx glass rv"><span class="em">📈</span><h4>Stock trading</h4><span>reading the markets</span></div>
     </div>
   </div>
 </section>
 
-<!-- stack -->
-<section id="stack">
+<!-- ================= ASK ================= -->
+<section id="ask">
   <div class="wrap">
-    <span class="eyebrow">Toolkit</span>
-    <h2 class="sec reveal">My Stack</h2>
-    <div class="stack-grid reveal">
-      <div class="sk"><b>Pb</b>Power BI</div>
-      <div class="sk"><b>Tb</b>Tableau</div>
-      <div class="sk"><b>Pg</b>PEGA</div>
-      <div class="sk"><b>Kf</b>Kafka</div>
-      <div class="sk"><b>Az</b>Azure AI</div>
-      <div class="sk"><b>MP</b>MS Project</div>
-      <div class="sk"><b>Ex</b>Excel modelling</div>
-      <div class="sk"><b>PRD</b>Product specs & roadmaps</div>
-      <div class="sk"><b>SQL</b>SQL</div>
-      <div class="sk"><b>{ }</b>Java / Python</div>
-      <div class="sk"><b>AI</b>GenAI for business</div>
-      <div class="sk"><b>UX</b>Prototyping & user journeys</div>
+    <div class="kicker">08 · Ask me anything</div>
+    <h2 class="big rv">Questions? <span class="grad">Ask.</span></h2>
+    <div class="chat glass rv">
+      <div class="log" id="log"><div class="msg ai">Hi! I'm a quick guide to Apoorva's CV. Ask about product work, consulting, Wells Fargo, competitions or hobbies.</div></div>
+      <form class="inp" id="askf"><input id="q" placeholder="e.g. Why product management?" autocomplete="off"><button aria-label="Send">↑</button></form>
+      <div class="sugs" id="sugs"><button>Why product + consulting?</button><button>Wipro internship?</button><button>Wells Fargo impact?</button><button>Case competitions?</button><button>Certifications?</button><button>Hobbies?</button></div>
+      <div class="note">// answers are pre-written from my CV, not live AI</div>
     </div>
-    <div class="graph reveal"><span class="hint">Skills map · drag the nodes</span><svg id="graph"></svg></div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
-    <h2>Let's build something <span class="serif">worth measuring.</span></h2>
+    <div class="kicker" style="justify-content:center">Let's talk</div>
+    <h2>Let's build<br><span class="grad">what's next.</span></h2>
     <p>Open to product management and technology consulting roles.</p>
-    <a class="cta" style="display:inline-flex" href="https://www.linkedin.com/in/apoorvachandarpadmanaban" target="_blank" rel="noopener"><span class="orb"></span>Connect on LinkedIn</a>
-    <div class="small">© 2026 Apoorva Chandar</div>
+    <a class="btn pri" href="https://www.linkedin.com/in/apoorvachandarpadmanaban" target="_blank" rel="noopener">Connect on LinkedIn →</a>
+    <div class="fl"><span>© 2026 Apoorva Chandar</span><span>Built with Three.js & vanilla JS · <a href="v1/">see the previous version</a></span></div>
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* ---------- theme ---------- */
-const root=document.documentElement;
-try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: dark)').matches)root.dataset.theme='dark'}catch(e){}
-document.getElementById('theme').onclick=()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}};
-const css=v=>getComputedStyle(root).getPropertyValue(v).trim();
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile=matchMedia('(max-width: 760px)').matches;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
-/* ---------- rotating title ---------- */
-const words=['Aspiring Product Manager','Tech Consultant','Ex-Software Engineer','MBA, IIM Kozhikode','Shark Tank Winner'];
-let wi=0;const rot=document.getElementById('rot');
-setInterval(()=>{rot.classList.add('out');setTimeout(()=>{wi=(wi+1)%words.length;rot.textContent=words[wi];rot.classList.remove('out')},600)},2800);
-
-/* ---------- halftone dots ---------- */
-function halftone(cv,opts={}){
-  const ctx=cv.getContext('2d');let w,h,mx=null,my=null,t=Math.random()*10;
-  const gap=opts.gap||9;
-  function size(){const r=cv.getBoundingClientRect(),d=devicePixelRatio||1;w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;ctx.setTransform(d,0,0,d,0,0)}
-  size();addEventListener('resize',size);
-  cv.parentElement.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
-  cv.parentElement.addEventListener('mouseleave',()=>{mx=my=null});
-  let vis=true;new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
-  (function draw(){
-    requestAnimationFrame(draw);if(!vis)return;t+=reduce?0:.012;
-    ctx.clearRect(0,0,w,h);ctx.fillStyle=css('--dot');
-    const cx=mx??w/2+Math.sin(t)*w*.08, cy=my??h/2+Math.cos(t*.8)*h*.08, R=Math.min(w,h)*(opts.spread||.32);
-    for(let x=gap/2;x<w;x+=gap)for(let y=gap/2;y<h;y+=gap){
-      const d=Math.hypot(x-cx,y-cy),g=Math.exp(-(d*d)/(2*R*R));
-      const wave=.5+.5*Math.sin(d*.05-t*3);
-      const r=.35+g*(opts.max||2.6)*(.6+.4*wave);
-      ctx.globalAlpha=.15+g*.85;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();
-    }
-    ctx.globalAlpha=1;
-  })();
-}
-halftone(document.getElementById('heroDots'),{gap:10,spread:.3,max:3.4});
-document.querySelectorAll('canvas[data-fx="dots"]').forEach(c=>halftone(c,{gap:9,spread:.22}));
-
-/* project canvases */
-function fx(cv,kind){
-  const ctx=cv.getContext('2d');let w,h;
-  function size(){const r=cv.getBoundingClientRect(),d=devicePixelRatio||1;w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;ctx.setTransform(d,0,0,d,0,0)}
-  size();addEventListener('resize',size);
-  const pts=Array.from({length:28},()=>({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.001,vy:(Math.random()-.5)*.001}));
-  let t=0;
-  (function draw(){
-    requestAnimationFrame(draw);t+=reduce?0:1;ctx.clearRect(0,0,w,h);
-    if(kind==='net'){
-      pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>1)p.vx*=-1;if(p.y<0||p.y>1)p.vy*=-1});
-      for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot((a.x-b.x)*w,(a.y-b.y)*h);if(d<90){ctx.strokeStyle=`rgba(255,180,110,${1-d/90})`;ctx.beginPath();ctx.moveTo(a.x*w,a.y*h);ctx.lineTo(b.x*w,b.y*h);ctx.stroke()}}
-      ctx.fillStyle='#fff';pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x*w,p.y*h,1.8,0,7);ctx.fill()});
-    }else if(kind==='path'){
-      const n=11,y0=h/2;ctx.lineWidth=2;
-      for(let i=0;i<n;i++){const x=30+i*(w-60)/(n-1),y=y0+Math.sin(i*1.7)*h*.22;const on=(t/12)%n>i;
-        if(i){const px=30+(i-1)*(w-60)/(n-1),py=y0+Math.sin((i-1)*1.7)*h*.22;ctx.strokeStyle=on?'#ff8a3d':'rgba(255,255,255,.18)';ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke()}
-        ctx.fillStyle=on?'#ffb36b':'rgba(255,255,255,.35)';ctx.beginPath();ctx.arc(x,y,on?5:3.5,0,7);ctx.fill()}
-    }else{
-      for(let k=0;k<4;k++){const r=((t*.6+k*40)%160);ctx.strokeStyle=`rgba(140,170,255,${1-r/160})`;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(w/2,h/2,r,0,7);ctx.stroke()}
-      ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(w/2,h/2,5,0,7);ctx.fill();
-      for(let i=0;i<14;i++){const a=i*2.4+t*.004,rr=30+(i*23)%100;ctx.fillStyle='rgba(255,255,255,.6)';ctx.beginPath();ctx.arc(w/2+Math.cos(a)*rr,h/2+Math.sin(a)*rr*.7,2,0,7);ctx.fill()}
-    }
-  })();
-}
-document.querySelectorAll('canvas[data-fx="net"],canvas[data-fx="path"],canvas[data-fx="geo"]').forEach(c=>fx(c,c.dataset.fx));
-
-/* live feed mock */
-const apps=['Payments','KYC','Disputes','Onboarding','Treasury','Lending','Cards','Compliance','Wires','Reporting','Accounts','Ops'];
-const feed=document.getElementById('feedRows');
-function addRow(){const r=document.createElement('div');r.className='row';r.style.animation='pop .4s ease both';
-  const id='REQ-'+Math.floor(10000+Math.random()*89999);r.innerHTML=`<span>${id} · ${apps[Math.floor(Math.random()*apps.length)]}</span><span class="chip ok">processed</span>`;
-  feed.prepend(r);if(feed.children.length>8)feed.lastChild.remove()}
-for(let i=0;i<8;i++)addRow();if(!reduce)setInterval(addRow,1100);
-
-/* ---------- reveal + counters ---------- */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const fmt=(v,dec)=>dec?v.toFixed(1):Math.round(v).toLocaleString();
-const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);const el=e.target,end=+el.dataset.count,dec=end%1!==0,pre=el.dataset.pre||'',suf=el.dataset.suf||'';let s=null;
-  (function step(ts){s??=ts;const p=Math.min((ts-s)/1400,1),v=end*(1-Math.pow(1-p,3));el.textContent=pre+fmt(v,dec)+suf;if(p<1)requestAnimationFrame(step)})(performance.now())}),{threshold:.6});
-if(!reduce)document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
-
-/* active nav */
-const secs=['home','work','projects','ask','about','stack'].map(id=>document.getElementById(id));
-const navLinks=document.querySelectorAll('[data-s]');
-const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
-secs.forEach(s=>so.observe(s));
-
-/* ---------- ask me anything ---------- */
-const KB=[
- [/wipro|intern|smart plant|energy|consult/i,"At Wipro Consulting (WiSE intern, Apr–Jun 2026) I worked on a Smart Plant digitalisation program in Energy, Manufacturing & Resources. I benchmarked 9 industry implementations with vendors, analysed 50,000+ L3/L4 deliverables in Power BI, recommended an architecture compatible with GE APM and PI Historian, and proposed prescriptive maintenance projected to cut unplanned downtime by 40% and save $1.5M a year. I also received a pre-placement interview offer."],
- [/wells|fargo|bank|pega|kafka|engineer/i,"I spent 34 months at Wells Fargo in Technology for the Chief Operating Office. As a Software Engineer I built a PEGA and Kafka utility that handles 5,000+ daily requests across 12+ apps with 100% throughput, and delivered an MVP in 2 months. As a Program Associate I built Tableau forecasting dashboards and a monitoring utility that cut escalations by 70%."],
- [/skill|stack|tool|tech/i,"Strategy and consulting: business cases, benchmarking, storylining. Data: Power BI, Tableau, SQL, Excel. Engineering: PEGA (PCSA certified), Kafka, Java/Python. AI: Azure AI Fundamentals (AI-900) and GenAI for business. Planning: MS Project and project management."],
- [/award|win|achiev|shark|prize|competition/i,"A few highlights: I won Wells Fargo's company-wide Shark Tank out of 2,000+ entries, received a Manager Spotlight Award, was a Campus Finalist at Axis Bank MOVES 2026 and Capgemini L'Innovateur, a semi-finalist at the Jindal Stainless case competition, and published a Springer paper at ERCICA 2023."],
- [/fun|hobb|free|football|sport|cycl/i,"Watching football, competitive programming, cycling and trading on the stock market. I also played U-16 zonal-level table tennis."],
- [/educat|study|mba|iim|college|degree|school/i,"I'm doing my MBA at IIM Kozhikode (2025–27). Before that I earned a B.E. from MIT, Anna University (8.1/10, 2018–22) and placed in the top 3 percentile of 0.8M+ students in the Tamil Nadu Class XII exams."],
- [/research|paper|publish|springer/i,"I published a paper on a self-learning search engine in Advances in Computing (ERCICA 2023, Springer). It has 300+ accesses."],
- [/contact|reach|hire|email|linkedin|connect/i,"The best way to reach me is LinkedIn: linkedin.com/in/apoorvachandarpadmanaban. Use the Let's Connect button at the top."],
- [/lead|responsib|event|nss|club/i,"I coordinated Prayatna, a national-level symposium at MIT, with 10+ colleges of outreach and 2,000+ registrations, and ran a Capture the Flag hackathon. I led an NSS unit on a 7-day rural outreach camp, and at IIM Kozhikode I help with placements on the Junior Placements Committee."],
- [/product|pm\b|manager|goal|looking|role|career/i,"I'm an MBA candidate aiming for product management and technology consulting. At Wells Fargo I shipped an MVP in 2 months by aligning 5+ stakeholders and won Shark Tank with a desktop-to-mobile product idea. At Wipro I turned technology options into business cases with measurable outcomes. I enjoy both building the product and advising on it."],
- [/^(hi|hey|hello)/i,"Hey! Ask me about my consulting work, Wells Fargo, skills, awards or what I do for fun."]
+/* =============== DATA =============== */
+const CASES=[
+ {id:'smart',tab:'Smart Plant',yr:'2026',co:'Wipro Consulting · Energy, Mfg & Resources',
+  title:'Smart Plant digitalisation: from use-case backlog to vendor shortlist',
+  period:'Apr – Jun 2026',role:'WiSE Consulting Intern',client:'DSP (steel plant program)',
+  problem:'A large plant program needed to decide which digital use cases to invest in, and tracked delivery in MPP files that had to be navigated by hand. Leadership wanted options with quantifiable business impact, technology that fits the existing stack, and live visibility into progress.',
+  users:['Program leadership','Plant operations','Consulting team','Tech vendors'],
+  root:'Smart Plant Transformation Toolkit',
+  modules:[
+   {n:'Use-case pipeline',k:'6 → 3',f:['Roadmap alignment','Business-impact sizing','Prioritisation']},
+   {n:'Vendor selection engine',k:'6-step',f:['Weighted scorecards','Vendor framework','Tech selection']},
+   {n:'Benchmark library',k:'9 cases',f:['Industry implementations','Outcome validation']},
+   {n:'Program monitor (Power BI)',k:'50K+',f:['MPP → Power BI','AC% / CT% work units','Variance tracking','Zero-reconfig refresh']},
+   {n:'Integration architecture',k:'APM + PI',f:['GE APM compatibility','PI Historian','Integration-led design']},
+   {n:'Value levers',k:'$1.5M/yr',f:['Prescriptive maintenance','Clamp-on flow metering']}],
+  cards:[
+   {v:'$1.5M/yr',h:'Prescriptive maintenance',p:'Proposal projected to cut unplanned downtime by 40%.',t:'projected'},
+   {v:'−40%',h:'Unplanned downtime',p:'From moving from reactive to prescriptive maintenance.',t:'projected'},
+   {v:'2%+',h:'Pump energy savings',p:'Clamp-on flow measurement to improve energy monitoring.'},
+   {v:'50,000+',h:'L3/L4 deliverables',p:'Analysed for AC%, CT% work units and project variance.'},
+   {v:'9',h:'Benchmarks',p:'Industry implementations reviewed with vendors to back recommendations.'},
+   {v:'6 → 3',h:'Use-case funnel',p:'6 new use cases evaluated; 3 prioritised through the vendor framework.'}],
+  chart:{title:'Use-case funnel',type:'funnel',data:[['Use cases evaluated',6],['Priority use cases',3],['Vendor framework steps',6],['Benchmarks referenced',9]]},
+  stack:['Power BI','MS Project (MPP)','GE APM','PI Historian','Weighted scorecards','Excel']},
+ {id:'ops',tab:'Ops Automation',yr:'2022–25',co:'Wells Fargo · Chief Operating Office',
+  title:'An operations automation platform behind 12+ banking apps',
+  period:'Aug 2022 – Jun 2025',role:'Software Engineer → Program Associate',client:'Internal: COO technology',
+  problem:'Thousands of daily requests passed through 12+ critical apps. Reconciliation was manual, failures surfaced only as business escalations, and getting a report took 5+ clicks. Regulated data also had to be cleaned before it moved anywhere.',
+  users:['Operations teams','Business stakeholders','Engineering','Auditors & regulators'],
+  root:'Ops Automation Platform',
+  modules:[
+   {n:'Request utility',k:'5K/day',f:['PEGA case flows','Kafka streams (10+)','100% throughput']},
+   {n:'Async reconciliation',k:'−55%',f:['Cross-team POC','Async transition','12+ hrs/month saved']},
+   {n:'Failure monitor',k:'−70%',f:['Critical-process alerts','Reporting utility','Root-cause loop']},
+   {n:'Insights layer',k:'1-click',f:['Tableau forecasting','Single-click dashboards','Stakeholder reporting']},
+   {n:'Compliance ETL',k:'10M+ rows',f:['15+ sensitive fields removed','100% data integrity']},
+   {n:'Release & enablement',k:'10+',f:['Release ownership','Knowledge base','Junior onboarding']}],
+  cards:[
+   {v:'5,000+',h:'Requests a day',p:'Across 12+ apps with 100% throughput, built on PEGA and Kafka.'},
+   {v:'−70%',h:'Business escalations',p:'A reporting utility that monitors failures in critical processes.'},
+   {v:'−55%',h:'Reconciliation effort',p:'An async transition led as a cross-team POC; 12+ hrs/month saved.'},
+   {v:'2 mo',h:'Time to MVP',p:'Aligned 5+ stakeholders and prototyped a simpler process in PEGA.'},
+   {v:'10M+',h:'Rows cleaned',p:'ETL with 15+ sensitive fields removed and 100% integrity.'},
+   {v:'−40%',h:'Training time',p:'Standardised onboarding; juniors contributing live within 3 months.'}],
+  chart:{title:'Before → after',type:'bars',data:[['Escalations',70],['Reconciliation effort',55],['Training time',40],['Report retrieval clicks (5 → 1)',80]]},
+  stack:['PEGA (PCSA)','Kafka','Tableau','ETL','Confluence','Azure (AZ-900)']},
+ {id:'mobile',tab:'Shark Tank: Mobile Shift',yr:'2024',co:'Wells Fargo · Company-wide Shark Tank',
+  title:'A desktop-to-mobile channel shift that won out of 2,000+ ideas',
+  period:'Wells Fargo tenure',role:'Proposer & pitch lead',client:'Wells Fargo digital channels (US)',
+  problem:'Many users still completed journeys on desktop. The pitch was a channel-shift roadmap with low time-to-market that moves users onto mobile, the channel that is cheaper to serve and more engaging.',
+  users:['US retail banking customers','Digital channel owners','Business leaders'],
+  root:'Desktop → Mobile Channel Shift',
+  modules:[
+   {n:'Shift roadmap',k:'0.36M+/yr',f:['Phased migration','US user base','Low time-to-market']},
+   {n:'Targeting',k:'+20% CTR',f:['Persona triangulation','Targeted positioning','Relevant offers']},
+   {n:'Pitch & buy-in',k:'#1 / 2000+',f:['Shark Tank win','Leadership recognition']}],
+  cards:[
+   {v:'#1',h:'of 2,000+ entries',p:'Won the company-wide Shark Tank.'},
+   {v:'0.36M+',h:'Users a year',p:'Projected shift from desktop to mobile in the US.',t:'projected'},
+   {v:'+20%',h:'Click-through rate',p:'Persona-based positioning and relevant offers.'}],
+  chart:{title:'How far the idea went',type:'bars',data:[['Entries beaten (of 2,000+)',100],['Leadership recognition',100],['CTR lift from personas (%)',20]]},
+  stack:['Personas','Roadmapping','Pitching','Digital channels']},
+ {id:'bets',tab:'Banking product bets',yr:'2022–25',co:'Wells Fargo · Ideation & initiatives',
+  title:'Two product bets: offline P2P payments and GenAI personalisation',
+  period:'Wells Fargo tenure',role:'Product proposer',client:'Payments & digital engagement',
+  problem:'Two observations led to two product ideas. P2P transactions loaded the servers and carried overhead cost on every transfer. Digital engagement was generic when it could be personal.',
+  users:['P2P payment users','Digital banking customers','Platform teams'],
+  root:'Banking Product Proposals',
+  modules:[
+   {n:'Offline P2P transactions',k:'−20% load',f:['Offline-first transfers','Lower server load','−50% overhead cost']},
+   {n:'GenAI hyper-personalised banking',k:'GenAI',f:['Personalised journeys','Digital engagement','Azure AI fundamentals']}],
+  cards:[
+   {v:'−20%',h:'Server load',p:'Projected for the offline P2P transaction system.',t:'projected'},
+   {v:'−50%',h:'Transaction overhead',p:'Projected cost reduction for P2P transfers.',t:'projected'},
+   {v:'GenAI',h:'Personalised banking',p:'Model proposed at an ideation event to lift digital engagement.'}],
+  chart:{title:'Projected impact',type:'bars',data:[['Server load reduction',20],['Overhead cost reduction',50]]},
+  stack:['Product discovery','Azure AI-900','Value proposition canvas','System design']}
 ];
-const log=document.getElementById('log');
-function say(text,who){const m=document.createElement('div');m.className='msg '+who;m.textContent=text;log.appendChild(m);log.scrollTop=log.scrollHeight;return m}
-function ask(q){if(!q.trim())return;say(q,'me');const hit=KB.find(([r])=>r.test(q));
-  const typing=say('…','ai');setTimeout(()=>{typing.textContent=hit?hit[1]:"I don't have a pre-written answer for that. Try asking about Wipro, Wells Fargo, skills, awards or education, or reach out on LinkedIn.";log.scrollTop=log.scrollHeight},550)}
-document.getElementById('askForm').onsubmit=e=>{e.preventDefault();const i=document.getElementById('q');ask(i.value);i.value=''};
-document.querySelectorAll('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
 
-/* ---------- skills graph ---------- */
-(function(){
-  const svg=document.getElementById('graph'),NS='http://www.w3.org/2000/svg';
-  const hubs=['Product','Tech Consulting','Data & Analytics','Engineering','AI'];
-  const leaves={'Product':['MVP in 2 months','Prototyping','User journeys','Stakeholders','Roadmapping'],'Tech Consulting':['Business cases','Benchmarking','Solution evaluation','Architecture','MS Project'],'Data & Analytics':['Power BI','Tableau','SQL','Forecasting'],'Engineering':['PEGA','Kafka','Java','Process automation'],'AI':['Azure AI-900','GenAI journeys','Search engines']};
-  let nodes=[],links=[];
-  hubs.forEach((h,i)=>{nodes.push({id:h,hub:1});leaves[h].forEach(l=>{nodes.push({id:l});links.push([h,l])});if(i)links.push([hubs[i-1],h])});
-  links.push([hubs[0],hubs[hubs.length-1]]);
-  const by=Object.fromEntries(nodes.map(n=>[n.id,n]));
-  let W,H;function sz(){const r=svg.getBoundingClientRect();W=r.width;H=r.height}sz();addEventListener('resize',sz);
-  nodes.forEach(n=>{n.x=W/2+(Math.random()-.5)*W*.6;n.y=H/2+(Math.random()-.5)*H*.6;n.vx=n.vy=0});
-  const lineEls=links.map(()=>{const l=document.createElementNS(NS,'line');svg.appendChild(l);return l});
-  const gEls=nodes.map(n=>{const g=document.createElementNS(NS,'g');g.style.cursor='grab';
-    const c=document.createElementNS(NS,'circle');c.setAttribute('r',n.hub?6:3);g.appendChild(c);
-    const t=document.createElementNS(NS,'text');t.textContent=n.id;t.setAttribute('x',n.hub?10:7);t.setAttribute('y',4);t.setAttribute('font-size',n.hub?13:11);if(n.hub)t.setAttribute('font-weight',600);g.appendChild(t);
-    svg.appendChild(g);
-    g.addEventListener('pointerdown',e=>{n.drag=1;g.setPointerCapture(e.pointerId)});
-    g.addEventListener('pointermove',e=>{if(!n.drag)return;const r=svg.getBoundingClientRect();n.x=e.clientX-r.left;n.y=e.clientY-r.top;n.vx=n.vy=0});
-    g.addEventListener('pointerup',()=>n.drag=0);
-    return g});
-  function tick(){
-    for(const a of nodes)for(const b of nodes){if(a===b)continue;const dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01,f=900/d2;a.vx+=dx*f*.05;a.vy+=dy*f*.05}
-    links.forEach(([s,t])=>{const a=by[s],b=by[t],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,L=a.hub&&b.hub?150:70,f=(d-L)*.01;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f});
-    nodes.forEach(n=>{n.vx+=(W/2-n.x)*.0015;n.vy+=(H/2-n.y)*.0015;if(!n.drag){n.vx*=.82;n.vy*=.82;n.x+=n.vx;n.y+=n.vy}n.x=Math.max(10,Math.min(W-110,n.x));n.y=Math.max(40,Math.min(H-14,n.y))});
-    const ink=css('--ink'),ink3=css('--ink3');
-    links.forEach(([s,t],i)=>{const l=lineEls[i];l.setAttribute('x1',by[s].x);l.setAttribute('y1',by[s].y);l.setAttribute('x2',by[t].x);l.setAttribute('y2',by[t].y);l.setAttribute('stroke',ink3);l.setAttribute('stroke-opacity',.5)});
-    nodes.forEach((n,i)=>{gEls[i].setAttribute('transform',`translate(${n.x},${n.y})`);gEls[i].firstChild.setAttribute('fill',ink);gEls[i].lastChild.setAttribute('fill',n.hub?ink:css('--ink2'))});
-    requestAnimationFrame(tick);
+const COMPS=[
+ {n:'SDI Shark Tank',h:'Wells Fargo · company-wide',d:'Pitched a desktop-to-mobile shift with low time-to-market. Projected to move 0.36M+ users a year.',s:4,stages:['Entry','Shortlist','Final pitch','Leadership','Winner'],b:'WINNER',c:'#4ade80',field:'2,000+ entries',fw:100},
+ {n:'Axis Bank MOVES',h:'2026 · B-school case competition',d:'Built an enterprise transformation strategy for 2035.',s:3,stages:['Entry','Round 1','Round 2','Campus final','National'],b:'CAMPUS FINALIST',c:'#ff7a3d'},
+ {n:"Capgemini L'Innovateur",h:'2026 · B-school case competition',d:'Built a Data-AI strategy for auto M&A, reaching the campus finals among the top 3 teams.',s:3,stages:['Entry','Round 1','Round 2','Campus final','National'],b:'TOP 3 · CAMPUS',c:'#a78bfa',field:'Top 3 teams',fw:100},
+ {n:'Jindal Stainless',h:'2026 · case competition',d:'Built a growth strategy and reached the semi-finals among 3,000+ participants.',s:2,stages:['Entry','Round 1','Semi-final','Final','Winner'],b:'SEMI-FINALIST',c:'#5eead4',field:'3,000+ participants',fw:100}
+];
+
+const CERTS=[
+ ['Microsoft','2024','AI-900 · Azure AI Fundamentals','GenAI for hyper-personalised banking; AI/ML and computer vision.','#5eead4'],
+ ['Microsoft','2022','AZ-900 · Azure Fundamentals','VMs, Blob Storage, RBAC and cost management for automation tools.','#5eead4'],
+ ['Pega Systems','2023','PCSA · Certified System Architect','Case lifecycle design and data modelling; saved 5+ man-hours.','#a78bfa'],
+ ['Udemy','2025','Become a Product Manager','13 hours: Agile, Figma, value proposition canvas, GTM.','#ff7a3d'],
+ ['Forage','2025','BCG Strategy Consulting','Client data, industry trends and profit levers.','#4ade80'],
+ ['Forage','2025','JPMorgan Chase Investment Banking','DCF valuation and M&A target selection.','#fcd34d']
+];
+
+const COURSES=['AI for Business','Mgmt of IT Products & Services','Strategic Management','Global Business Strategy','Strategic Innovation with Adv Tech','Project Management','Globalization & Culture','Commercial Bank Mgmt','Money, Markets & Consumption','Corporate Finance','Corporate Governance','Fixed Income Securities','Optimization with Spreadsheets','Operations Management','Sustainability and Business','Innovation & Design Thinking'];
+
+const MILES=[
+ [2013,'Merit · Geography Talent Test'],[2014,'1st of 100+ · NatQ quiz'],[2015,'U-16 zonal Table Tennis'],[2017,'Organised Prakasam Prati · 500+ students'],[2017,'Runner-up · SciMax expo'],
+ [2018,'Top 3 %ile of 0.8M+ · Class XII'],[2020,'Led NSS rural camp'],[2021,'Built Hand Gesture Painter'],[2022,'B.E. First Class · 10/10 project'],[2022,'Joined Wells Fargo'],[2022,'AZ-900 certified'],
+ [2023,'PCSA certified'],[2023,'Springer paper · ERCICA'],[2024,'AI-900 certified'],[2024,'Shark Tank winner · 2,000+'],[2025,'Joined IIM Kozhikode'],[2025,'BCG & JPM simulations'],[2025,'Placements Committee'],
+ [2026,'Wipro Consulting · PPI'],[2026,'Axis MOVES campus finalist'],[2026,"Capgemini L'Innovateur finals"],[2026,'Jindal semi-finals']
+];
+
+/* =============== ticker / rotator =============== */
+const TK=[['SHARK TANK','#1 / 2000+','up'],['ESCALATIONS','▼ 70%','dn'],['RECONCILIATION','▼ 55%','dn'],['THROUGHPUT','100%','up'],['DOWNTIME (PROJ.)','▼ 40%','dn'],['SAVINGS (PROJ.)','▲ $1.5M/yr','up'],['DAILY REQUESTS','▲ 5,000+','up'],['CTR','▲ 20%','up'],['MOBILE SHIFT','▲ 0.36M users/yr','up'],['SPRINGER','300+ accesses','up'],['DATA INTEGRITY','100% · 10M rows','up'],['TRAINING TIME','▼ 40%','dn']];
+const tkHTML=TK.map(([a,b,c])=>`<span><b>${a}</b><span class="${c}">${b}</span></span>`).join('');
+$('#track').innerHTML=tkHTML+tkHTML;
+const ROLES=['ex-Wells Fargo engineer','Wipro Consulting PPI','Shark Tank winner','Springer author','MBA @ IIM Kozhikode'];
+let ri=0;setInterval(()=>{const s=$('#swap');s.classList.add('out');setTimeout(()=>{ri=(ri+1)%ROLES.length;s.textContent=ROLES[ri];s.classList.remove('out')},500)},2600);
+
+/* =============== charts =============== */
+const IMPACT=[['Escalations',70,0],['Reconciliation effort',55,0],['P2P overhead cost',50,1],['Pre-processing time',50,0],['Training time',40,0],['Unplanned downtime',40,1],['Server load',20,1],['CTR (lift)',20,0]];
+$('#impact').innerHTML=IMPACT.map(([t,v,p])=>`<div class="hbar"><span class="t">${t}</span><div class="tr"><div class="f ${p?'p':''}" data-w="${v}"></div></div><span class="v">${t.includes('CTR')?'+':'−'}${v}%</span></div>`).join('');
+const RINGS=[['B.E. CGPA','8.1/10',81,'#ff7a3d'],['Class XII','92.67%',92.67,'#a78bfa'],['Class X','92.00%',92,'#5eead4'],['A+ grades','28 of 37',28/37*100,'#fcd34d']];
+$('#rings').innerHTML=RINGS.map(([n,v,p,c])=>{const C=2*Math.PI*36;return `<div class="ring"><svg viewBox="0 0 84 84"><circle class="bgc" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36" stroke="${c}" stroke-dasharray="${C}" stroke-dashoffset="${C}" data-off="${C*(1-p/100)}"/></svg><div><b>${v}</b><span>${n}</span></div></div>`}).join('');
+
+function drawCareer(){
+  const svg=$('#career'),W=svg.clientWidth||900,H=280,pad=34,NS='http://www.w3.org/2000/svg';
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML='';
+  const y0=2012.5,y1=2026.5,max=MILES.length;
+  const counts={};const pts=MILES.map((m,i)=>{counts[m[0]]=(counts[m[0]]||0)+1;const jitter=(counts[m[0]]-1)*.18;return{x:pad+(m[0]+jitter-y0)/(y1-y0)*(W-pad*2),y:H-pad-(i+1)/max*(H-pad*2),m}});
+  let grid='';for(let y=2013;y<=2026;y++){const x=pad+(y-y0)/(y1-y0)*(W-pad*2);if(W<600&&y%2)continue;grid+=`<line x1="${x}" x2="${x}" y1="${pad-10}" y2="${H-pad}" stroke="rgba(255,255,255,.05)"/><text x="${x}" y="${H-10}" fill="#77768a" font-size="10.5" text-anchor="middle" font-family="JetBrains Mono">'${String(y).slice(2)}</text>`}
+  const d=pts.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+  svg.innerHTML=`<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ade80" stop-opacity=".35"/><stop offset="1" stop-color="#4ade80" stop-opacity="0"/></linearGradient><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#4ade80"/></linearGradient></defs>${grid}
+  <path d="${d} L${pts.at(-1).x} ${H-pad} L${pts[0].x} ${H-pad} Z" fill="url(#ag)" class="area" opacity="0"/>
+  <path d="${d}" fill="none" stroke="url(#lg)" stroke-width="2.5" class="ln"/>`;
+  const ln=svg.querySelector('.ln'),L=ln.getTotalLength();ln.style.strokeDasharray=L;ln.style.strokeDashoffset=L;ln.style.transition='stroke-dashoffset 2.4s cubic-bezier(.2,.8,.2,1)';
+  svg.querySelector('.area').style.transition='opacity 1.5s 1s';
+  const tip=$('#tip'),box=svg.parentElement;
+  pts.forEach(p=>{const c=document.createElementNS(NS,'circle');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r',4.5);c.setAttribute('fill','#07070c');c.setAttribute('stroke','#4ade80');c.setAttribute('stroke-width',2);c.style.cursor='pointer';
+    const show=()=>{c.setAttribute('r',7);const r=svg.getBoundingClientRect(),br=box.getBoundingClientRect();tip.innerHTML=`<b>${p.m[0]}</b>${p.m[1]}`;tip.style.left=Math.min(r.left-br.left+p.x*(r.width/W)+10,br.width-250)+'px';tip.style.top=(r.top-br.top+p.y*(r.height/H)-50)+'px';tip.style.opacity=1};
+    c.addEventListener('mouseenter',show);c.addEventListener('click',show);c.addEventListener('mouseleave',()=>{c.setAttribute('r',4.5);tip.style.opacity=0});svg.appendChild(c)});
+  const last=pts.at(-1);svg.insertAdjacentHTML('beforeend',`<text x="${last.x-6}" y="${last.y-14}" fill="#4ade80" font-size="12" text-anchor="end" font-family="JetBrains Mono">${MILES.length} milestones ▲</text>`);
+  if(svg.dataset.shown){ln.style.strokeDashoffset=0;svg.querySelector('.area').setAttribute('opacity',1)}
+}
+drawCareer();addEventListener('resize',()=>{clearTimeout(window._cr);window._cr=setTimeout(drawCareer,200)});
+
+/* competitions */
+$('#comps').innerHTML=COMPS.map(c=>`<div class="comp glass rv tilt" style="--c:${c.c}"><span class="badge" style="color:${c.c};border-color:${c.c}55">${c.b}</span><h3>${c.n}</h3><div class="host">${c.h}</div><p>${c.d}</p>
+ <div class="stages">${c.stages.map((s,i)=>`<div class="stg ${i<=c.s?'done':''}">${s}</div>`).join('')}</div>
+ ${c.field?`<div class="field"><span>${c.field}</span><div class="bar"><i data-w="${c.fw}"></i></div></div>`:''}</div>`).join('');
+
+/* certs + courses */
+$('#certs').innerHTML=CERTS.map(([i,y,t,d,c])=>`<div class="cert glass rv"><div class="seal" style="background:${c}22;color:${c}">✓</div><div class="iss"><span>${i}</span><span>${y}</span></div><h4>${t}</h4><p>${d}</p></div>`).join('');
+$('#cloud').innerHTML=COURSES.map(c=>`<span>${c}</span>`).join('');
+
+/* =============== case studies =============== */
+function renderCase(i){
+  const c=CASES[i];$$('.tab').forEach((t,j)=>t.classList.toggle('on',i===j));
+  const chart=c.chart.type==='funnel'
+   ?c.chart.data.map(([t,v])=>`<div class="hbar"><span class="t">${t}</span><div class="tr"><div class="f" data-w="${v/9*100}"></div></div><span class="v">${v}</span></div>`).join('')
+   :c.chart.data.map(([t,v])=>`<div class="hbar"><span class="t">${t}</span><div class="tr"><div class="f" data-w="${v}"></div></div><span class="v">${v}%</span></div>`).join('');
+  $('#case').innerHTML=`<div class="cs">
+   <aside class="cs-side glass"><div class="co">${c.co}</div><h3>${c.title}</h3>
+    <dl class="meta"><dt>Role</dt><dd>${c.role}</dd><dt>When</dt><dd>${c.period}</dd><dt>Context</dt><dd>${c.client}</dd></dl>
+    <h4>The problem</h4><p>${c.problem}</p>
+    <h4>Who it served</h4><div class="chips">${c.users.map(u=>`<span>${u}</span>`).join('')}</div>
+    <h4>Stack & methods</h4><div class="chips">${c.stack.map(u=>`<span>${u}</span>`).join('')}</div></aside>
+   <div class="cs-main">
+    <div class="tree glass"><h4>Product breakdown · modules → features</h4><div class="root">◆ ${c.root}</div>
+     <ul>${c.modules.map(m=>`<li><span class="mod">${m.n} <em>${m.k}</em></span><div class="feats">${m.f.map(f=>`<span>${f}</span>`).join('')}</div></li>`).join('')}</ul></div>
+    <div><div class="featgrid-h" style="margin:8px 4px 12px">Feature impact</div>
+     <div class="featgrid">${c.cards.map((k,j)=>`<div class="fc glass tilt"><span class="n">F-${String(j+1).padStart(2,'0')}</span><b class="grad">${k.v}</b><h5>${k.h}</h5><p>${k.p}</p>${k.t?`<span class="tag">${k.t}</span>`:''}</div>`).join('')}</div></div>
+    <div class="cs-chart glass"><h4>${c.chart.title}</h4>${chart}</div>
+    <div class="cs-foot glass"><span>Want the full teardown: user journeys, trade-offs, what I'd do next?</span><a class="btn" href="https://www.linkedin.com/in/apoorvachandarpadmanaban" target="_blank" rel="noopener">Let's talk →</a></div>
+   </div></div>`;
+  requestAnimationFrame(()=>setTimeout(()=>$$('#case .f').forEach(f=>f.style.width=f.dataset.w+'%'),60));
+  bindTilt();
+}
+$('#tabs').innerHTML=CASES.map((c,i)=>`<button class="tab">${c.tab}<small>${c.yr}</small></button>`).join('');
+$$('.tab').forEach((t,i)=>t.onclick=()=>renderCase(i));
+renderCase(0);
+
+/* accordions */
+$$('.acc button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
+
+/* =============== reveal & counters =============== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');io.unobserve(el);
+  el.querySelectorAll('.f[data-w],.field i[data-w]').forEach(f=>f.style.width=f.dataset.w+'%');
+  el.querySelectorAll('.fg').forEach(r=>r.style.strokeDashoffset=r.dataset.off);
+  el.querySelectorAll('[data-n]').forEach(count);
+  if(el.contains($('#career'))){const s=$('#career');s.dataset.shown=1;s.querySelector('.ln').style.strokeDashoffset=0;s.querySelector('.area').setAttribute('opacity',1)}
+}),{threshold:.15});
+$$('.rv').forEach(el=>io.observe(el));
+function count(el){if(reduce||el.dataset.done)return;el.dataset.done=1;const end=+el.dataset.n,dec=end<10&&end%1!==0?(end<1?2:1):0,pre=el.dataset.p||'',suf=el.dataset.s||'';let s0;
+  (function st(ts){s0??=ts;const p=Math.min((ts-s0)/1600,1),v=end*(1-Math.pow(1-p,4));el.textContent=pre+(dec?v.toFixed(dec):Math.round(v).toLocaleString())+suf;if(p<1)requestAnimationFrame(st)})(performance.now())}
+
+/* =============== tilt =============== */
+function bindTilt(){if(isMobile||reduce)return;$$('.tilt').forEach(el=>{if(el._t)return;el._t=1;
+  el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-4px)`});
+  el.addEventListener('mouseleave',()=>el.style.transform='')})}
+bindTilt();
+
+/* =============== scroll: progress, nav, parallax =============== */
+let mx=0,my=0;
+addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;const c=$('#cur');c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'});
+const navSecs=['top','numbers','cases','experience','competitions','projects','ask'].map(id=>document.getElementById(id));
+function onScroll(){
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  $('#prog').style.width=(y/h*100)+'%';
+  if(!reduce){
+    $$('[data-speed]').forEach(el=>el.style.transform=`translateY(${y*+el.dataset.speed}px)`);
+    $$('[data-x]').forEach(el=>{const r=el.getBoundingClientRect();el.style.transform=`translateX(${(r.top-innerHeight/2)*+el.dataset.x}px)`});
   }
-  tick();
+  let cur='top';navSecs.forEach(s=>{if(s&&s.getBoundingClientRect().top<innerHeight*.4)cur=s.id});
+  $$('.nav a[data-s]').forEach(a=>a.classList.toggle('on',a.dataset.s===cur));
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* =============== mini canvases in projects =============== */
+$$('canvas[data-fx]').forEach(cv=>{
+  const ctx=cv.getContext('2d'),kind=cv.dataset.fx;let w,h,t=0,vis=false;
+  const sz=()=>{const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio,2);w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;ctx.setTransform(d,0,0,d,0,0)};sz();addEventListener('resize',sz);
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(cv);
+  const P=Array.from({length:36},()=>({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.0012,vy:(Math.random()-.5)*.0012}));
+  const strokes=[];
+  (function loop(){requestAnimationFrame(loop);if(!vis&&t>0)return;t+=reduce?0:1;ctx.clearRect(0,0,w,h);
+    if(kind==='net'){P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>1)p.vx*=-1;if(p.y<0||p.y>1)p.vy*=-1});
+      for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot((a.x-b.x)*w,(a.y-b.y)*h);if(d<95){ctx.strokeStyle=`rgba(167,139,250,${1-d/95})`;ctx.beginPath();ctx.moveTo(a.x*w,a.y*h);ctx.lineTo(b.x*w,b.y*h);ctx.stroke()}}
+      P.forEach((p,i)=>{ctx.fillStyle=i%7?'#fff':'#ff7a3d';ctx.beginPath();ctx.arc(p.x*w,p.y*h,i%7?1.8:3.5,0,7);ctx.fill()});
+    }else if(kind==='geo'){
+      ctx.strokeStyle='rgba(255,255,255,.06)';for(let x=0;x<w;x+=24){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=0;y<h;y+=24){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+      const hubs=[[.3,.45],[.68,.4],[.5,.75]];
+      hubs.forEach(([hx,hy],k)=>{for(let r=0;r<3;r++){const R=((t*.5+r*30+k*20)%90);ctx.strokeStyle=`rgba(94,234,212,${1-R/90})`;ctx.beginPath();ctx.arc(hx*w,hy*h,R,0,7);ctx.stroke()}
+        for(let i=0;i<14;i++){const a=i*2.39+k,rr=8+((i*13)%40);ctx.fillStyle=i%5?'rgba(255,255,255,.7)':'#f87171';ctx.beginPath();ctx.arc(hx*w+Math.cos(a+t*.003)*rr,hy*h+Math.sin(a+t*.003)*rr,1.8,0,7);ctx.fill()}
+        ctx.fillStyle='#5eead4';ctx.beginPath();ctx.arc(hx*w,hy*h,4,0,7);ctx.fill()});
+    }else if(kind==='cpm'){
+      const n=11,cols=['#ff7a3d','#a78bfa'];const prog=(t/14)%(n+4);
+      for(let i=0;i<n;i++){const x=24+i*(w-48)/(n-1),y=h/2+Math.sin(i*1.3)*h*.24;
+        if(i){const px=24+(i-1)*(w-48)/(n-1),py=h/2+Math.sin((i-1)*1.3)*h*.24;ctx.strokeStyle=prog>i?'#ff7a3d':'rgba(255,255,255,.15)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();
+          ctx.strokeStyle='rgba(167,139,250,.25)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,h/2+Math.cos(i)*h*.35);ctx.stroke()}
+        ctx.fillStyle=prog>i?'#ffb37a':'rgba(255,255,255,.35)';ctx.beginPath();ctx.arc(x,y,prog>i?5:3.5,0,7);ctx.fill()}
+      ctx.fillStyle='#b3b1bd';ctx.font='11px JetBrains Mono';ctx.fillText('52 wk → 24 wk',14,20);
+    }else if(kind==='paint'){
+      const hx=w/2+Math.sin(t*.021)*w*.33,hy=h/2+Math.sin(t*.034)*h*.3;
+      if(t%2===0)strokes.push({x:hx,y:hy,c:`hsl(${(t*.8)%360},90%,65%)`});if(strokes.length>220)strokes.shift();
+      ctx.lineCap='round';ctx.lineWidth=5;for(let i=1;i<strokes.length;i++){ctx.strokeStyle=strokes[i].c;ctx.globalAlpha=i/strokes.length;ctx.beginPath();ctx.moveTo(strokes[i-1].x,strokes[i-1].y);ctx.lineTo(strokes[i].x,strokes[i].y);ctx.stroke()}
+      ctx.globalAlpha=1;ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.strokeRect(hx-14,hy-14,28,28);ctx.fillStyle='#fff';ctx.font='10px JetBrains Mono';ctx.fillText('hand ✋',hx+18,hy-6);
+    }
+  })();
+});
+
+/* =============== ask me anything =============== */
+const KB=[
+ [/why|product|pm\b|consult|goal|role|career|looking/i,"I sit between building and advising. At Wells Fargo I shipped an MVP in 2 months, won Shark Tank with a mobile-shift idea and moved real metrics (escalations down 70%). At Wipro I turned technology options into business cases. Product management and tech consulting both need someone who can talk to engineers and to the business, and that's my edge."],
+ [/wipro|intern|smart|plant|ppi/i,"At Wipro Consulting (Apr–Jun 2026, Energy, Manufacturing & Resources) I evaluated 6 digital use cases, ran 3 priority ones through a 6-step vendor framework, benchmarked 9 implementations, built a reusable MPP → Power BI dashboard over 50,000+ deliverables, and proposed prescriptive maintenance (−40% downtime, $1.5M/yr, projected). I received a PPI."],
+ [/wells|fargo|bank|pega|kafka|engineer|impact/i,"34 months at Wells Fargo: 5,000+ daily requests at 100% throughput (PEGA + Kafka), escalations down 70%, reconciliation effort down 55%, 10M+ rows ETL'd with 100% integrity, 10+ releases owned, juniors trained to contribute live in 3 months, plus a Shark Tank win and a Manager Spotlight Award."],
+ [/case|comp|axis|capgemini|jindal|shark/i,"Shark Tank winner (Wells Fargo, 2,000+ entries) · Axis Bank MOVES 2026 campus finalist · Capgemini L'Innovateur campus finals (top 3) · Jindal Stainless semi-finals (3,000+). I also did the BCG strategy and JPMorgan IB simulations on Forage."],
+ [/cert|azure|udemy|forage|bcg|jpm|course/i,"AI-900 and AZ-900 (Microsoft), PCSA (Pega), Become a Product Manager (Udemy, 13 hrs) and the BCG and JPMorgan simulations (Forage). MBA coursework covers AI for Business, Management of IT Products, Strategy, Corporate Finance, Design Thinking and more."],
+ [/hobb|fun|free|sport|football|cycl|stock|trad/i,"Football (watching), competitive programming, cycling and stock market trading. I played U-18 zonal throwball and U-16 zonal table tennis, and I was a school quizmaster."],
+ [/project|research|paper|springer|gesture|event/i,"Projects: Location-Based Event Detection (0.8M+ tweets, 50% faster pre-processing, 80%+ accuracy, 10/10 grade), a Hand Gesture Painter (OpenCV, 45+ hrs of video), a CPM plan that cut a launch from 52 to 24 weeks, and a Springer paper on a self-improving search engine (300+ accesses)."],
+ [/educat|study|mba|iim|school|college|grade|cgpa/i,"MBA at IIM Kozhikode (2025–27). B.E. in Computer Science from MIT, Anna University: 8.1/10, First Class, 28 A+ grades in 37 subjects. Class XII: 92.67%, top 3 %ile of 0.8M+ students."],
+ [/lead|responsib|committee|event|nss|organ/i,"Elected member of the Placements Committee at IIM Kozhikode. Event Coordinator at Prayatna (2,000+ registrations, a CTF hackathon, and a sponsor who gave the winners PPIs). Organiser of Prakasam Prati (500+ students). Led an NSS rural camp."],
+ [/contact|reach|hire|linkedin|email/i,"LinkedIn is the best way: linkedin.com/in/apoorvachandarpadmanaban"],
+ [/^(hi|hey|hello|yo)\b/i,"Hey! Try asking: why product + consulting?"]
+];
+function say(t,w){const m=document.createElement('div');m.className='msg '+w;m.textContent=t;$('#log').appendChild(m);$('#log').scrollTop=1e6;return m}
+function ask(q){if(!q.trim())return;say(q,'me');const hit=KB.find(([r])=>r.test(q));const m=say('typing…','ai');
+  setTimeout(()=>{m.textContent=hit?hit[1]:"I don't have a pre-written answer for that one. Try product, Wipro, Wells Fargo, competitions, projects or hobbies, or message me on LinkedIn.";$('#log').scrollTop=1e6},600)}
+$('#askf').onsubmit=e=>{e.preventDefault();ask($('#q').value);$('#q').value=''};
+$$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
+
+/* =============== THREE.JS SCENE =============== */
+(function(){
+  if(!window.THREE){$('#three').remove();return}
+  const canvas=$('#three');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(35,1,.1,100);camera.position.set(0,0,20);
+  function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()}
+  resize();addEventListener('resize',resize);
+
+  scene.add(new THREE.HemisphereLight(0xc8c0ff,0x1a1020,.9));
+  const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(5,8,10);scene.add(key);
+  const rim=new THREE.PointLight(0xff7a3d,1.6,40);rim.position.set(-8,-4,6);scene.add(rim);
+  const rim2=new THREE.PointLight(0x5eead4,1.0,40);rim2.position.set(9,5,4);scene.add(rim2);
+
+  const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.45,metalness:.1,flatShading:true},o));
+  const box=(w,h,d,m)=>new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);
+  const cyl=(rt,rb,h,s,m)=>new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,s),m);
+  function tex(draw,w=512,h=320){const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);return t}
+
+  function laptop(){const g=new THREE.Group();const body=M(0x2b2b3a,{metalness:.5,roughness:.3});
+    const base=box(3.2,.14,2.2,body);g.add(base);
+    const kb=box(2.8,.02,1.2,M(0x15151f));kb.position.set(0,.08,-.25);g.add(kb);
+    const pad=box(.9,.02,.5,M(0x3a3a4c));pad.position.set(0,.08,.68);g.add(pad);
+    const scr=new THREE.Group();const lid=box(3.2,2.1,.1,body);lid.position.y=1.05;scr.add(lid);
+    const screenTex=tex((x,w,h)=>{x.fillStyle='#0b0b14';x.fillRect(0,0,w,h);const cols=['#ff7a3d','#a78bfa','#5eead4','#fcd34d','#b3b1bd'];
+      for(let i=0;i<14;i++){let xx=20+(i%3)*18;x.fillStyle=cols[i%5];x.fillRect(xx,18+i*21,40+Math.random()*180,9);x.fillStyle='#55556a';x.fillRect(xx+240,18+i*21,30+Math.random()*120,9)}
+      x.strokeStyle='#4ade80';x.lineWidth=4;x.beginPath();x.moveTo(330,280);[[360,250],[390,262],[420,220],[450,230],[490,170]].forEach(p=>x.lineTo(...p));x.stroke()});
+    const sc=new THREE.Mesh(new THREE.PlaneGeometry(3,1.9),new THREE.MeshBasicMaterial({map:screenTex}));sc.position.set(0,1.05,.056);scr.add(sc);
+    scr.position.z=-1.1;scr.rotation.x=-.28;g.add(scr);return g}
+
+  function building(colBody,colRoof,cols=5,dome=false){const g=new THREE.Group();const m=M(colBody),r=M(colRoof);
+    const s1=box(4.2,.25,2.6,m);s1.position.y=-1.25;g.add(s1);const s2=box(3.9,.2,2.35,m);s2.position.y=-1.03;g.add(s2);
+    for(let i=0;i<cols;i++){const c=cyl(.14,.16,1.9,10,m);c.position.set(-1.6+i*(3.2/(cols-1)),0,.75);g.add(c);const c2=c.clone();c2.position.z=-.75;g.add(c2)}
+    const wall=box(3.4,1.9,1.2,M(colBody,{color:new THREE.Color(colBody).multiplyScalar(.8)}));g.add(wall);
+    const roof=box(4.1,.25,2.4,r);roof.position.y=1.07;g.add(roof);
+    const prism=new THREE.Mesh(new THREE.CylinderGeometry(1,1,2.3,3),r);prism.rotation.set(Math.PI/2,0,Math.PI/2);prism.scale.set(.6,1,2.1);prism.position.y=1.47;g.add(prism);
+    if(dome){const d=new THREE.Mesh(new THREE.SphereGeometry(.7,16,10,0,Math.PI*2,0,Math.PI/2),M(0xfcd34d,{metalness:.7,roughness:.25}));d.position.y=1.85;g.add(d)}
+    return g}
+
+  function cap(){const g=new THREE.Group();const k=M(0x1d1d2a);
+    const top=box(2.6,.1,2.6,k);top.rotation.y=Math.PI/4;top.position.y=.45;g.add(top);
+    const b=cyl(.95,1.05,.7,24,k);g.add(b);
+    const btn=cyl(.12,.12,.08,12,M(0xff7a3d));btn.position.y=.53;g.add(btn);
+    const cord=box(.04,.04,1.3,M(0xff7a3d));cord.position.set(.0,.52,.62);cord.rotation.y=0;g.add(cord);
+    const tas=cyl(.05,.16,.6,8,M(0xff7a3d));tas.position.set(0,.2,1.27);g.add(tas);return g}
+
+  function ball(){const g=new THREE.Group();const geo=new THREE.IcosahedronGeometry(1.25,1);
+    g.add(new THREE.Mesh(geo,M(0xf4f2ee,{roughness:.6})));
+    const ico=new THREE.IcosahedronGeometry(1.26,0);const pos=ico.attributes.position;const seen={};
+    for(let i=0;i<pos.count;i++){const v=new THREE.Vector3().fromBufferAttribute(pos,i);const key=v.toArray().map(n=>n.toFixed(2)).join();if(seen[key])continue;seen[key]=1;
+      const p=new THREE.Mesh(new THREE.CircleGeometry(.36,5),new THREE.MeshStandardMaterial({color:0x111118,side:THREE.DoubleSide}));p.position.copy(v.multiplyScalar(1.005));p.lookAt(0,0,0);g.add(p)}
+    g.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:0x222230})));return g}
+
+  function stocks(){const g=new THREE.Group();const hs=[.8,1.3,1.0,1.8,1.5,2.4,2.9];
+    hs.forEach((h,i)=>{const up=i===0||h>=hs[i-1];const b=box(.38,h,.38,M(up?0x4ade80:0xf87171,{emissive:up?0x0a3a1a:0x3a0a0a}));b.position.set(-1.5+i*.5,h/2-1.4,0);g.add(b);
+      const wick=box(.05,h+.4,.05,M(0xdddddd));wick.position.copy(b.position);g.add(wick)});
+    const pts=hs.map((h,i)=>new THREE.Vector3(-1.5+i*.5,h-1.2,.45));const curve=new THREE.CatmullRomCurve3(pts);
+    g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,40,.05,8),M(0xff7a3d,{emissive:0x552000})));
+    const cone=new THREE.Mesh(new THREE.ConeGeometry(.18,.4,12),M(0xff7a3d,{emissive:0x552000}));cone.position.copy(pts.at(-1)).add(new THREE.Vector3(.15,.2,0));cone.rotation.z=-.6;g.add(cone);
+    const base=box(3.8,.08,1.2,M(0x2b2b3a));base.position.y=-1.42;g.add(base);return g}
+
+  function coin(sym='$'){const t=tex((x,w,h)=>{x.fillStyle='#e9b949';x.fillRect(0,0,w,h);x.strokeStyle='#b8860b';x.lineWidth=18;x.beginPath();x.arc(w/2,h/2,w/2-20,0,7);x.stroke();x.fillStyle='#8a5a00';x.font='bold 300px Syne, sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(sym,w/2,h/2+16)},512,512);
+    const side=M(0xd4a017,{metalness:.8,roughness:.25,flatShading:false}),face=new THREE.MeshStandardMaterial({map:t,metalness:.6,roughness:.3});
+    const c=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.16,40),[side,face,face]);c.rotation.x=Math.PI/2;const g=new THREE.Group();g.add(c);return g}
+
+  function wheel(){const g=new THREE.Group();g.add(new THREE.Mesh(new THREE.TorusGeometry(1.2,.11,10,40),M(0x1d1d2a)));
+    g.add(new THREE.Mesh(new THREE.TorusGeometry(1.06,.04,6,40),M(0xc0c0d0,{metalness:.8})));
+    for(let i=0;i<12;i++){const s=box(.02,2.1,.02,M(0xd0d0e0,{metalness:.8}));s.rotation.z=i*Math.PI/12;g.add(s)}
+    g.add(cyl(.14,.14,.25,12,M(0xff7a3d)).rotateX(Math.PI/2));return g}
+
+  function paddle(){const g=new THREE.Group();const head=cyl(.9,.9,.08,32,M(0xe23b3b,{flatShading:false}));head.rotation.x=Math.PI/2;g.add(head);
+    const back=cyl(.9,.9,.02,32,M(0x111111));back.rotation.x=Math.PI/2;back.position.z=-.05;g.add(back);
+    const h=box(.24,.9,.16,M(0xb07a45));h.position.y=-1.25;g.add(h);
+    const b=new THREE.Mesh(new THREE.SphereGeometry(.16,16,12),M(0xffffff,{flatShading:false}));b.position.set(.9,.9,.3);g.add(b);return g}
+
+  function server(){const g=new THREE.Group();for(let i=0;i<3;i++){const u=box(2.2,.5,1.5,M(0x22222f,{metalness:.5}));u.position.y=i*.6-.6;g.add(u);
+      for(let j=0;j<4;j++){const led=box(.08,.08,.02,new THREE.MeshBasicMaterial({color:[0x4ade80,0x5eead4,0xff7a3d,0x4ade80][j]}));led.position.set(-.8+j*.2,i*.6-.6,.76);led.userData.blink=Math.random()*6;g.add(led)}
+      const slot=box(1.0,.06,.02,M(0x3a3a4c));slot.position.set(.45,i*.6-.6,.76);g.add(slot)}return g}
+
+  function phone(){const g=new THREE.Group();g.add(box(1.1,2.2,.12,M(0x1d1d2a,{metalness:.5})));
+    const t=tex((x,w,h)=>{const gr=x.createLinearGradient(0,0,w,h);gr.addColorStop(0,'#ff7a3d');gr.addColorStop(1,'#a78bfa');x.fillStyle=gr;x.fillRect(0,0,w,h);x.fillStyle='rgba(255,255,255,.9)';x.font='bold 40px Inter';x.fillText('+0.36M',30,120);x.font='26px Inter';x.fillText('users/yr → mobile',30,160);
+      for(let i=0;i<4;i++){x.fillStyle='rgba(255,255,255,.25)';x.fillRect(30,220+i*70,w-60,50)}},320,640);
+    const s=new THREE.Mesh(new THREE.PlaneGeometry(1,2.05),new THREE.MeshBasicMaterial({map:t}));s.position.z=.065;g.add(s);return g}
+
+  // [builder, x(-1..1 of view width), z, appear (in viewport-heights scrolled), speed, scale, mobileKeep]
+  const LAYOUT=[
+    [laptop,  .62, 1.5, .26, 1.0, 1.0, 1],
+    [cap,    -.7, -1, -.22, .7, .9, 1],
+    [ball,   -.5, 3, .55, 1.35, .7, 0],
+    [coin,    .72, -3, .45, .55, .8, 1],
+    [stocks,  .68, 0, 1.4, 1.0, .85, 1],
+    [()=>building(0xece3d0,0xa78bfa,5,false), -.68, -2, 1.9, .8, .75, 1],
+    [server, -.72, 1, 3.0, 1.15, .7, 0],
+    [()=>building(0x2d3550,0xfcd34d,4,true), .7, -2.5, 3.6, .7, .8, 1],
+    [phone,  -.6, 2, 4.4, 1.25, .8, 1],
+    [()=>coin('₹'),  .66, 1, 5.0, 1.4, .55, 0],
+    [stocks, -.7, -3, 5.8, .65, .7, 0],
+    [paddle,  .7, 1, 6.6, 1.1, .7, 1],
+    [ball,   -.66, -1, 7.4, .9, .65, 1],
+    [laptop,  .68, -2, 8.2, .75, .7, 0],
+    [wheel,  -.68, 1.5, 9.0, 1.2, .75, 1],
+    [()=>building(0xece3d0,0xff7a3d,6,false), .66, -2, 9.8, .8, .7, 1],
+    [coin,   -.7, 2, 10.6, 1.3, .55, 1],
+    [cap,     .68, 0, 11.4, 1.0, .75, 1],
+    [wheel,   .6, -3, 12.3, .7, .6, 0],
+    [stocks, -.66, 1, 13.2, 1.1, .7, 1],
+  ];
+  const objs=[];
+  LAYOUT.forEach(([fn,x,z,ap,sp,sc,keep],i)=>{if(isMobile&&!keep)return;const g=fn();g.scale.setScalar(sc*(isMobile?.6:1));
+    g.userData={x,z,ap,sp,ph:Math.random()*6,rs:(Math.random()*.4+.2)*(i%2?1:-1)};g.rotation.set(Math.random()*.6-.3,Math.random()*Math.PI,0);scene.add(g);objs.push(g)});
+
+  // dust particles
+  const N=isMobile?250:600,pg=new THREE.BufferGeometry(),pa=new Float32Array(N*3);
+  for(let i=0;i<N;i++){pa[i*3]=(Math.random()-.5)*40;pa[i*3+1]=(Math.random()-.5)*30;pa[i*3+2]=(Math.random()-.5)*20-4}
+  pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
+  const dust=new THREE.Points(pg,new THREE.PointsMaterial({color:0xffffff,size:.05,transparent:true,opacity:.5}));scene.add(dust);
+
+  let smx=0,smy=0,vis=true,t0=performance.now();
+  document.addEventListener('visibilitychange',()=>vis=!document.hidden);
+  const fovT=Math.tan(THREE.MathUtils.degToRad(35/2));
+  function frame(now){requestAnimationFrame(frame);if(!vis)return;
+    const t=reduce?0:(now-t0)/1000,sv=scrollY/innerHeight;
+    smx+=(mx-smx)*.05;smy+=(my-smy)*.05;
+    objs.forEach(o=>{const u=o.userData,dist=camera.position.z-u.z,hh=2*fovT*dist,hw=hh*camera.aspect;
+      const ax=Math.sign(u.x)*(isMobile?.95:.8+(Math.abs(u.x)-.5)*.4);
+      o.position.x=ax*hw/2+smx*(4-u.z)*.25;
+      o.position.y=(sv-u.ap)*u.sp*hh+Math.sin(t*.8+u.ph)*.25-smy*(4-u.z)*.2;
+      o.position.z=u.z;
+      o.rotation.y+=reduce?0:.004*u.rs*3;o.rotation.x=Math.sin(t*.5+u.ph)*.25+smy*.3;
+      o.traverse(m=>{if(m.userData.blink!==undefined)m.visible=Math.sin(t*4+m.userData.blink)>-.3});
+    });
+    dust.position.y=sv*1.2;dust.rotation.y=t*.01;
+    camera.position.x=smx*.6;camera.lookAt(0,0,0);
+    renderer.render(scene,camera)}
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
