@@ -1,29 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dusk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apoorva Chandar · Product & Tech Consulting</title>
 <meta name="description" content="Apoorva Chandar: MBA candidate at IIM Kozhikode, aspiring product manager and technology consultant. Ex-Wells Fargo software engineer, Wipro Consulting intern, Springer-published author.">
+<script>try{var t=localStorage.getItem('ac-theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.dataset.theme='light'}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#07070c; --bg2:#0d0d16; --glass:rgba(255,255,255,.045); --glass2:rgba(255,255,255,.08);
-  --line:rgba(255,255,255,.09); --ink:#f4f2ee; --ink2:#b3b1bd; --ink3:#77768a;
-  --o:#ff7a3d; --l:#a78bfa; --m:#5eead4; --y:#fcd34d; --g:#4ade80; --r:#f87171;
+:root,[data-theme="dusk"]{
+  --bg:#141522; --bg2:#1a1c2c; --panel:#1e2031; --glass:rgba(255,255,255,.055); --glass2:rgba(255,255,255,.1);
+  --line:rgba(255,255,255,.11); --ink:#f5f3ef; --ink2:#c3c1cf; --ink3:#8e8da3; --fgc:255,255,255; --onInk:#14141c;
+  --o:#ff8a4f; --l:#b39dfb; --m:#6ee7d8; --y:#fcd34d; --g:#5be38f; --r:#f87171;
+  --gl1:rgba(179,157,251,.20); --gl2:rgba(255,138,79,.14); --gl3:rgba(110,231,216,.10);
+  --gold1:#ffd27a; --gold2:#ff9f5a;
   --rad:24px;
+}
+[data-theme="ocean"]{
+  --bg:#0f2130; --bg2:#14293b; --panel:#173047; --glass:rgba(255,255,255,.06); --glass2:rgba(255,255,255,.11);
+  --line:rgba(180,220,255,.13); --ink:#f1f7fb; --ink2:#bcd0dd; --ink3:#86a2b5; --fgc:225,240,255; --onInk:#0f2130;
+  --o:#ffa45c; --l:#8fb8ff; --m:#5eead4; --gl1:rgba(94,234,212,.16); --gl2:rgba(143,184,255,.16); --gl3:rgba(255,164,92,.10);
+}
+[data-theme="plum"]{
+  --bg:#1d1426; --bg2:#251a31; --panel:#2a1e37; --glass:rgba(255,255,255,.06); --glass2:rgba(255,255,255,.11);
+  --line:rgba(255,220,255,.12); --ink:#fbf4fb; --ink2:#d4c4d8; --ink3:#a08fa8; --fgc:255,235,255; --onInk:#1d1426;
+  --o:#ff8fa3; --l:#c4a1ff; --m:#f9c97c; --gl1:rgba(255,143,163,.18); --gl2:rgba(196,161,255,.18); --gl3:rgba(249,201,124,.10);
+}
+[data-theme="light"]{
+  --bg:#f7f4ee; --bg2:#efeae1; --panel:#ffffff; --glass:rgba(255,255,255,.62); --glass2:rgba(255,255,255,.9);
+  --line:rgba(30,25,50,.11); --ink:#17151f; --ink2:#4a4757; --ink3:#7b7889; --fgc:30,25,50; --onInk:#ffffff;
+  --o:#e8692e; --l:#7c5cdb; --m:#0e9f8e; --y:#b7791f; --g:#16a34a; --r:#dc2626;
+  --gl1:rgba(124,92,219,.14); --gl2:rgba(232,105,46,.13); --gl3:rgba(14,159,142,.10);
+  --gold1:#c27c0e; --gold2:#e8692e;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);transition:background .5s,color .5s;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
-  radial-gradient(60vw 50vh at 85% 10%,rgba(167,139,250,.13),transparent 70%),
-  radial-gradient(50vw 50vh at 5% 60%,rgba(255,122,61,.10),transparent 70%),
-  radial-gradient(40vw 40vh at 60% 100%,rgba(94,234,212,.08),transparent 70%)}
+  radial-gradient(60vw 50vh at 85% 10%,var(--gl1),transparent 70%),
+  radial-gradient(50vw 50vh at 5% 60%,var(--gl2),transparent 70%),
+  radial-gradient(40vw 40vh at 60% 100%,var(--gl3),transparent 70%)}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--o);color:#000}
+::selection{background:var(--o);color:#fff}
 #three{position:fixed;inset:0;z-index:1;pointer-events:none;width:100vw;height:100vh}
 main,header,footer{position:relative;z-index:2}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
@@ -39,12 +59,12 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 
 /* progress + nav */
 #prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:linear-gradient(90deg,var(--o),var(--l),var(--m))}
-.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:8px;align-items:center;padding:6px;border-radius:999px;background:rgba(12,12,20,.6);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:8px;align-items:center;padding:6px;border-radius:999px;background:color-mix(in srgb,var(--bg) 72%,transparent);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .nav a{font-size:13px;padding:8px 14px;border-radius:999px;color:var(--ink2);transition:.2s;white-space:nowrap}
 .nav a:hover{color:var(--ink)}
-.nav a.on{background:rgba(255,255,255,.1);color:var(--ink)}
-.nav .cta{background:var(--ink);color:#000;font-weight:600;display:flex;align-items:center;gap:8px}
-.nav .cta:hover{color:#000}
+.nav a.on{background:rgba(var(--fgc),.1);color:var(--ink)}
+.nav .cta{background:var(--ink);color:var(--onInk);font-weight:600;display:flex;align-items:center;gap:8px}
+.nav .cta:hover{color:var(--onInk)}
 .nav .cta i{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 4px rgba(74,222,128,.25);animation:pulse 1.6s infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
 
@@ -65,7 +85,7 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .hero p.sub{margin-top:18px}
 .btns{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-size:14.5px;font-weight:500;border:1px solid var(--line);background:var(--glass);transition:.25s}
-.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+.btn:hover{transform:translateY(-2px);border-color:rgba(var(--fgc),.25)}
 .btn.pri{background:linear-gradient(90deg,var(--o),#ff9a5c);color:#140800;border:0;font-weight:600}
 .scrollcue{margin-top:60px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);letter-spacing:.2em;display:flex;align-items:center;gap:12px}
 .scrollcue i{width:1px;height:44px;background:linear-gradient(var(--ink3),transparent);position:relative;overflow:hidden}
@@ -73,7 +93,7 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 @keyframes drop{to{top:44px}}
 
 /* ticker */
-.ticker{position:relative;z-index:2;border-block:1px solid var(--line);background:rgba(7,7,12,.7);backdrop-filter:blur(8px);overflow:hidden;white-space:nowrap}
+.ticker{position:relative;z-index:2;border-block:1px solid var(--line);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(8px);overflow:hidden;white-space:nowrap}
 .ticker .track{display:inline-flex;gap:48px;padding:14px 0;animation:tick 45s linear infinite}
 .ticker span{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink2)}
 .ticker b{color:var(--ink);font-weight:500;margin-right:6px}
@@ -81,7 +101,7 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 @keyframes tick{to{transform:translateX(-50%)}}
 
 /* outline parallax words */
-.outline{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(70px,14vw,220px);line-height:.9;letter-spacing:-.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);pointer-events:none;user-select:none;will-change:transform}
+.outline{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(70px,14vw,220px);line-height:.9;letter-spacing:-.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(var(--fgc),.12);pointer-events:none;user-select:none;will-change:transform}
 
 /* ---------- numbers ---------- */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}
@@ -95,7 +115,7 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .chart .cap{color:var(--ink3);font-size:12.5px;margin-bottom:20px;font-family:'JetBrains Mono',monospace}
 .hbar{display:grid;grid-template-columns:150px 1fr 56px;gap:12px;align-items:center;margin-bottom:12px;font-size:13px}
 .hbar .t{color:var(--ink2)}
-.hbar .tr{height:10px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden}
+.hbar .tr{height:10px;border-radius:99px;background:rgba(var(--fgc),.06);overflow:hidden}
 .hbar .f{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--o),var(--l));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
 .hbar .f.p{background:repeating-linear-gradient(45deg,var(--m) 0 6px,rgba(94,234,212,.55) 6px 12px)}
 .hbar .v{font-family:'JetBrains Mono',monospace;text-align:right}
@@ -105,13 +125,13 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .ring{display:flex;align-items:center;gap:14px}
 .ring svg{width:84px;height:84px;flex:none;transform:rotate(-90deg)}
 .ring circle{fill:none;stroke-width:8}
-.ring .bgc{stroke:rgba(255,255,255,.07)}
+.ring .bgc{stroke:rgba(var(--fgc),.07)}
 .ring .fg{stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
 .ring b{font-family:'Syne',sans-serif;font-size:22px;display:block;line-height:1.1}
 .ring span{font-size:12.5px;color:var(--ink2)}
 .career{padding:26px;margin-top:14px}
 .career svg{width:100%;height:280px;overflow:visible}
-.career .tip{position:absolute;pointer-events:none;background:#15151f;border:1px solid var(--line);padding:8px 12px;border-radius:10px;font-size:12.5px;max-width:240px;opacity:0;transition:opacity .15s;z-index:5}
+.career .tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);padding:8px 12px;border-radius:10px;font-size:12.5px;max-width:240px;opacity:0;transition:opacity .15s;z-index:5}
 .career .tip b{color:var(--o);font-family:'JetBrains Mono',monospace;font-size:11px;display:block}
 
 /* ---------- case studies ---------- */
@@ -119,8 +139,8 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .tab{font:inherit;font-size:14px;padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--ink2);cursor:pointer;transition:.25s;display:flex;gap:8px;align-items:center}
 .tab small{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink3)}
 .tab:hover{color:var(--ink)}
-.tab.on{background:var(--ink);color:#000;border-color:var(--ink)}
-.tab.on small{color:#555}
+.tab.on{background:var(--ink);color:var(--onInk);border-color:var(--ink)}
+.tab.on small{color:var(--onInk);opacity:.6}
 .cs{display:grid;grid-template-columns:380px 1fr;gap:14px;animation:fade .5s ease}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}}
 .cs-side{padding:28px;align-self:start;position:sticky;top:90px}
@@ -131,18 +151,18 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .cs-side h4{font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--ink3);margin:18px 0 8px}
 .cs-side p{font-size:14.5px;color:var(--ink2)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chips span{font-size:12px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink2)}
+.chips span{font-size:12px;padding:5px 11px;border-radius:999px;background:rgba(var(--fgc),.06);border:1px solid var(--line);color:var(--ink2)}
 .cs-main{display:flex;flex-direction:column;gap:14px}
 .tree{padding:28px}
 .tree h4,.featgrid-h,.cs-chart h4{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:18px}
 .tree .root{display:inline-flex;gap:10px;align-items:center;padding:10px 16px;border-radius:14px;background:linear-gradient(90deg,rgba(255,122,61,.18),rgba(167,139,250,.18));border:1px solid rgba(255,122,61,.35);font-weight:600;font-family:'Syne',sans-serif}
-.tree ul{list-style:none;margin:6px 0 0 22px;padding-left:22px;border-left:1px dashed rgba(255,255,255,.18)}
+.tree ul{list-style:none;margin:6px 0 0 22px;padding-left:22px;border-left:1px dashed rgba(var(--fgc),.18)}
 .tree li{position:relative;padding:10px 0 2px}
-.tree li::before{content:"";position:absolute;left:-22px;top:24px;width:18px;border-top:1px dashed rgba(255,255,255,.18)}
+.tree li::before{content:"";position:absolute;left:-22px;top:24px;width:18px;border-top:1px dashed rgba(var(--fgc),.18)}
 .tree .mod{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:14.5px;cursor:pointer}
 .tree .mod em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:2px 8px;border-radius:99px;background:rgba(94,234,212,.12);color:var(--m)}
 .tree .feats{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.tree .feats span{font-size:12.5px;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.05);color:var(--ink2);border:1px solid var(--line)}
+.tree .feats span{font-size:12.5px;padding:5px 10px;border-radius:10px;background:rgba(var(--fgc),.05);color:var(--ink2);border:1px solid var(--line)}
 .featgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .fc{padding:22px;transition:transform .3s,border-color .3s;transform-style:preserve-3d}
 .fc:hover{border-color:rgba(255,122,61,.4)}
@@ -181,14 +201,14 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .comp p{color:var(--ink2);font-size:14px;min-height:44px}
 .stages{display:flex;align-items:center;margin-top:24px}
 .stg{flex:1;position:relative;text-align:center;font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--ink3);padding-top:22px}
-.stg::before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:rgba(255,255,255,.08)}
-.stg::after{content:"";position:absolute;top:0;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#1a1a26;border:2px solid rgba(255,255,255,.18)}
+.stg::before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:rgba(var(--fgc),.08)}
+.stg::after{content:"";position:absolute;top:0;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--panel);border:2px solid rgba(var(--fgc),.18)}
 .stg.done{color:var(--ink)}
 .stg.done::before{background:var(--c)}
 .stg.done::after{background:var(--c);border-color:var(--c);box-shadow:0 0 14px var(--c)}
 .stg:first-child::before{left:50%}.stg:last-child::before{right:50%}
 .field{margin-top:18px;font-size:12.5px;color:var(--ink3);display:flex;gap:10px;align-items:center}
-.field .bar{flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.06);overflow:hidden}
+.field .bar{flex:1;height:6px;border-radius:9px;background:rgba(var(--fgc),.06);overflow:hidden}
 .field .bar i{display:block;height:100%;background:var(--c);width:0;transition:width 1.4s}
 .sims{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
 .sim{padding:22px;display:flex;gap:16px;align-items:flex-start}
@@ -225,8 +245,8 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .edu .row span{color:var(--ink2);font-size:13.5px}
 .edu .row em{font-style:normal;font-family:'JetBrains Mono',monospace;color:var(--o);text-align:right;font-size:14px}
 .cloud{display:flex;flex-wrap:wrap;gap:8px}
-.cloud span{padding:8px 14px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:rgba(255,255,255,.035);transition:.3s;cursor:default}
-.cloud span:hover{background:var(--ink);color:#000;transform:rotate(-2deg) scale(1.05)}
+.cloud span{padding:8px 14px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:rgba(var(--fgc),.035);transition:.3s;cursor:default}
+.cloud span:hover{background:var(--ink);color:var(--onInk);transform:rotate(-2deg) scale(1.05)}
 .aclist{list-style:none;margin-top:14px}
 .aclist li{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
 .aclist li span{font-family:'JetBrains Mono',monospace;color:var(--ink3);font-size:12px}
@@ -249,18 +269,55 @@ p.sub{color:var(--ink2);max-width:640px;font-size:17px}
 .hob .bx span{font-size:13.5px;color:var(--ink2)}
 
 /* ---------- ask ---------- */
-.chat{max-width:780px;margin:40px auto 0;padding:24px}
-.log{display:flex;flex-direction:column;gap:12px;max-height:360px;overflow:auto;margin-bottom:14px;padding:4px}
-.msg{max-width:86%;padding:12px 16px;border-radius:18px;font-size:14.5px;animation:fade .35s ease both}
-.msg.me{align-self:flex-end;background:var(--ink);color:#000;border-bottom-right-radius:6px}
-.msg.ai{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid var(--line);border-bottom-left-radius:6px}
-.inp{display:flex;gap:10px;border-radius:18px;padding:6px 6px 6px 18px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
-.inp input{flex:1;background:transparent;border:0;outline:0;font:inherit;color:var(--ink);font-size:15px}
-.inp button{border:0;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--o),var(--l));cursor:pointer;color:#000;font-size:18px}
-.sugs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.sugs button{font:inherit;font-size:12.5px;padding:7px 13px;border-radius:999px;background:transparent;border:1px solid var(--line);color:var(--ink2);cursor:pointer}
-.sugs button:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
+#ask{padding-top:110px}
+.askwrap{position:relative;margin-top:40px;border-radius:30px;padding:2px;background:conic-gradient(from var(--ang),var(--o),var(--l),var(--m),var(--o));animation:spinb 6s linear infinite;box-shadow:0 30px 120px -30px var(--gl1),0 0 80px -20px var(--gl2)}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spinb{to{--ang:360deg}}
+.askin{border-radius:28px;background:var(--panel);display:grid;grid-template-columns:250px 1fr;min-height:560px;overflow:hidden}
+.cats{padding:22px 14px;border-right:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;gap:4px}
+.cats .h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--ink3);padding:6px 12px 12px;text-transform:uppercase}
+.cat{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 12px;border-radius:12px;font-size:14px;color:var(--ink2);transition:.2s}
+.cat:hover{background:var(--glass);color:var(--ink)}
+.cat.on{background:var(--ink);color:var(--onInk)}
+.cat small{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.6}
+.convo{display:flex;flex-direction:column;padding:24px;min-width:0}
+.convo .top{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--o),var(--l));display:grid;place-items:center;font-family:'Syne';font-weight:800;color:#fff;position:relative;flex:none}
+.av::after{content:"";position:absolute;right:0;bottom:0;width:11px;height:11px;border-radius:50%;background:var(--g);border:2px solid var(--panel)}
+.convo .top b{display:block;font-size:15px}
+.convo .top span{font-size:12px;color:var(--ink3)}
+.log{flex:1;display:flex;flex-direction:column;gap:12px;overflow:auto;padding:18px 2px;min-height:240px;max-height:380px}
+.msg{max-width:86%;padding:12px 16px;border-radius:18px;font-size:14.5px;animation:fade .35s ease both;white-space:pre-line}
+.msg.me{align-self:flex-end;background:linear-gradient(135deg,var(--o),var(--l));color:#fff;border-bottom-right-radius:6px}
+.msg.ai{align-self:flex-start;background:var(--glass);border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.ai .cur{display:inline-block;width:7px;height:15px;background:var(--o);vertical-align:-2px;margin-left:2px;animation:blink .8s infinite}
+@keyframes blink{50%{opacity:0}}
+.qs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.qs button{font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--line);color:var(--ink);cursor:pointer;transition:.2s;text-align:left}
+.qs button:hover{border-color:var(--o);transform:translateY(-2px)}
+.qs button.used{opacity:.45}
+.inp{display:flex;gap:10px;border-radius:18px;padding:6px 6px 6px 18px;background:var(--bg2);border:1px solid var(--line)}
+.inp input{flex:1;min-width:0;background:transparent;border:0;outline:0;font:inherit;color:var(--ink);font-size:15px}
+.inp button{border:0;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--o),var(--l));cursor:pointer;color:#fff;font-size:18px}
 .note{font-size:11.5px;color:var(--ink3);margin-top:12px;font-family:'JetBrains Mono',monospace}
+.fab{position:fixed;right:22px;bottom:22px;z-index:55;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 12px;border-radius:999px;background:var(--ink);color:var(--onInk);font-weight:600;font-size:14px;box-shadow:0 12px 40px -8px rgba(0,0,0,.45),0 0 0 0 var(--o);animation:fabp 2.6s infinite;transition:opacity .3s,transform .3s}
+.fab i{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--o),var(--l));display:grid;place-items:center;color:#fff;font-style:normal}
+.fab.hide{opacity:0;transform:translateY(20px);pointer-events:none}
+@keyframes fabp{0%{box-shadow:0 12px 40px -8px rgba(0,0,0,.45),0 0 0 0 color-mix(in srgb,var(--o) 60%,transparent)}70%{box-shadow:0 12px 40px -8px rgba(0,0,0,.45),0 0 0 14px transparent}}
+
+/* themes picker */
+.themes{display:flex;gap:6px;padding:0 6px 0 4px;align-items:center}
+.themes button{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0;transition:transform .2s}
+.themes button:hover{transform:scale(1.2)}
+.themes button.on{border-color:var(--ink);transform:scale(1.15)}
+
+/* IIM highlight */
+.hero .hello .iim{font-size:14.5px}
+.iim{font-weight:700;background:linear-gradient(90deg,var(--gold1),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px color-mix(in srgb,var(--gold2) 45%,transparent))}
+.hero .hello{border-color:color-mix(in srgb,var(--gold2) 45%,transparent)!important;box-shadow:0 0 30px -8px color-mix(in srgb,var(--gold2) 50%,transparent)}
+.iimcard{position:relative;margin:-6px -10px 6px;padding:22px 20px!important;border-radius:18px;background:linear-gradient(120deg,color-mix(in srgb,var(--gold1) 20%,transparent),color-mix(in srgb,var(--l) 14%,transparent));border:1px solid color-mix(in srgb,var(--gold2) 50%,transparent)!important}
+.iimcard b{font-size:22px!important}
+.iimcard span:first-of-type{color:var(--ink)!important;font-weight:500}
 
 /* footer */
 footer{padding:140px 0 50px;text-align:center}
@@ -283,6 +340,11 @@ footer p{color:var(--ink2);margin:22px 0 32px}
   .bento{grid-template-columns:1fr 1fr}
   .b1,.b2{grid-column:span 2}.b3,.b4,.b5{grid-column:span 1}
   .hob{grid-template-columns:repeat(2,1fr)}
+  .askin{grid-template-columns:1fr}
+  .cats{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:12px}
+  .cats .h{display:none}
+  .cat{white-space:nowrap}
+  .cat small{display:none}
   .hero h1 .l2{padding-left:0}
   #cur{display:none}
 }
@@ -296,6 +358,9 @@ footer p{color:var(--ink2);margin:22px 0 32px}
   .comp h3{padding-right:0;margin-top:28px}
   .stg{font-size:9px}
   section{padding-top:100px}
+  .fab span{display:none}
+  .fab{padding:10px}
+  .convo{padding:16px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
@@ -308,16 +373,18 @@ footer p{color:var(--ink2);margin:22px 0 32px}
 <nav class="nav" id="nav">
   <a href="#top" data-s="top" class="keep">AC</a>
   <a href="#numbers" data-s="numbers">Numbers</a>
+  <a href="#ask" data-s="ask">Ask me</a>
   <a href="#cases" data-s="cases">Case studies</a>
   <a href="#experience" data-s="experience">Experience</a>
   <a href="#competitions" data-s="competitions">Competitions</a>
   <a href="#projects" data-s="projects">Projects</a>
-  <a href="#ask" data-s="ask">Ask</a>
   <a class="cta" href="https://www.linkedin.com/in/apoorvachandarpadmanaban" target="_blank" rel="noopener"><i></i>Connect</a>
+  <div class="themes" id="themes" aria-label="Colour theme"></div>
 </nav>
+<a class="fab" id="fab" href="#ask"><i>✦</i><span>Ask me anything</span></a>
 
 <header class="hero wrap" id="top">
-  <div><span class="hello"><b>●</b> MBA '27 · IIM Kozhikode · open to product & tech consulting roles</span></div>
+  <div><span class="hello"><b>●</b> <span class="iim">MBA · IIM Kozhikode '27</span> · open to product & tech consulting roles</span></div>
   <h1 class="disp" data-speed="-0.15">Apoorva<span class="l2 grad">Chandar.</span></h1>
   <div class="role"><span>Product</span><span class="x">×</span><span>Tech Consulting</span><span class="x">/</span><span class="swap"><span id="swap">ex-Wells Fargo engineer</span></span></div>
   <p class="sub">I've written production code and built business cases. I spent 34 months building banking operations tech at Wells Fargo, worked on Smart Plant digitalisation at Wipro Consulting, and I'm now studying how to turn technology into products people use.</p>
@@ -370,11 +437,30 @@ footer p{color:var(--ink2);margin:22px 0 32px}
   </div>
 </section>
 
+<!-- ================= ASK ================= -->
+<section id="ask">
+  <div class="wrap">
+    <div class="kicker">02 · Ask me anything</div>
+    <h2 class="big rv">Skip the CV.<br><span class="grad">Just ask.</span></h2>
+    <p class="sub rv">An interactive guide to my experience. Pick a topic, tap a question, or type your own.</p>
+    <div class="askwrap rv"><div class="askin">
+      <div class="cats" id="cats"><div class="h">Topics</div></div>
+      <div class="convo">
+        <div class="top"><div class="av">AC</div><div><b>Apoorva's CV guide</b><span id="status">online · answers from my CV</span></div></div>
+        <div class="log" id="log"></div>
+        <div class="qs" id="qs"></div>
+        <form class="inp" id="askf"><input id="q" placeholder="Type a question, e.g. why product management?" autocomplete="off"><button aria-label="Send">↑</button></form>
+        <div class="note">// answers are pre-written from my CV, not a live AI</div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
 <!-- ================= CASE STUDIES ================= -->
 <section id="cases">
   <div class="outline" data-x="0.25" style="text-align:right;margin-bottom:-40px">PRODUCT → FEATURES → IMPACT</div>
   <div class="wrap">
-    <div class="kicker">02 · Case studies</div>
+    <div class="kicker">03 · Case studies</div>
     <h2 class="big rv">Product <span class="grad">teardowns.</span></h2>
     <p class="sub rv">Each case is broken down the way a PM would: the problem, who it's for, the product split into modules and features, and the measured impact.</p>
     <div class="tabs" id="tabs"></div>
@@ -385,7 +471,7 @@ footer p{color:var(--ink2);margin:22px 0 32px}
 <!-- ================= EXPERIENCE ================= -->
 <section id="experience">
   <div class="wrap">
-    <div class="kicker">03 · Experience</div>
+    <div class="kicker">04 · Experience</div>
     <h2 class="big rv">34 months in industry,<br><span class="grad">plus one consulting summer.</span></h2>
     <div class="xp">
       <div class="xcard glass rv">
@@ -444,7 +530,7 @@ footer p{color:var(--ink2);margin:22px 0 32px}
 <section id="competitions">
   <div class="outline" data-x="-0.2" style="margin-bottom:-40px">CASE COMPS · CASE COMPS</div>
   <div class="wrap">
-    <div class="kicker">04 · Case competitions</div>
+    <div class="kicker">05 · Case competitions</div>
     <h2 class="big rv">How far each<br><span class="grad">competition went.</span></h2>
     <p class="sub rv">Every case, mapped by the stage it reached.</p>
     <div class="comps" id="comps"></div>
@@ -458,7 +544,7 @@ footer p{color:var(--ink2);margin:22px 0 32px}
 <!-- ================= PROJECTS ================= -->
 <section id="projects">
   <div class="wrap">
-    <div class="kicker">05 · Projects & certifications</div>
+    <div class="kicker">06 · Projects & certifications</div>
     <h2 class="big rv">Things I've <span class="grad">built.</span></h2>
     <div class="projs">
       <div class="proj glass rv tilt"><div class="vis"><canvas data-fx="geo"></canvas></div><div class="body"><span class="yr">2022 · MIT, ANNA UNIVERSITY · 10/10 GRADE</span><h3>Location-Based Event Detection</h3><ul>
@@ -482,11 +568,11 @@ footer p{color:var(--ink2);margin:22px 0 32px}
 <section id="academics">
   <div class="outline" data-x="0.2" style="text-align:right;margin-bottom:-40px">LEARNING · LEARNING</div>
   <div class="wrap">
-    <div class="kicker">06 · Academics</div>
+    <div class="kicker">07 · Academics</div>
     <h2 class="big rv">Engineer, now <span class="grad">MBA.</span></h2>
     <div class="acad">
       <div class="edu glass rv">
-        <div class="row"><b>MBA</b><em>'25–27</em><span>Indian Institute of Management Kozhikode</span><span></span></div>
+        <div class="row iimcard"><b class="iim">MBA · IIM Kozhikode</b><em>'25–27</em><span>Indian Institute of Management Kozhikode, Batch 2025–27 · elected to the Students' Placements Committee</span><span></span></div>
         <div class="row"><b>B.E. Computer Science</b><em>8.1 / 10</em><span>Madras Institute of Technology, Anna University · First Class · 28 A+ in 37 subjects</span><span class="mono" style="color:var(--ink3);font-size:12px">'18–22</span></div>
         <div class="row"><b>Class XII</b><em>92.67%</em><span>GRT Mahalakshmi Vidyalaya, Chennai · top 3 %ile of 0.8M+ students</span><span class="mono" style="color:var(--ink3);font-size:12px">'18</span></div>
         <div class="row"><b>Class X</b><em>92.00%</em><span>GRT Mahalakshmi Vidyalaya, Chennai</span><span class="mono" style="color:var(--ink3);font-size:12px">'16</span></div>
@@ -508,7 +594,7 @@ footer p{color:var(--ink2);margin:22px 0 32px}
 <!-- ================= BEYOND ================= -->
 <section id="beyond">
   <div class="wrap">
-    <div class="kicker">07 · Leadership & beyond</div>
+    <div class="kicker">08 · Leadership & beyond</div>
     <h2 class="big rv">Outside <span class="grad">work.</span></h2>
     <div class="bento">
       <div class="bx glass b1 rv"><span class="lbl">MIT, Anna University · 2022</span><h4>Event Coordinator, Prayatna</h4><ul>
@@ -532,19 +618,6 @@ footer p{color:var(--ink2);margin:22px 0 32px}
   </div>
 </section>
 
-<!-- ================= ASK ================= -->
-<section id="ask">
-  <div class="wrap">
-    <div class="kicker">08 · Ask me anything</div>
-    <h2 class="big rv">Questions? <span class="grad">Ask.</span></h2>
-    <div class="chat glass rv">
-      <div class="log" id="log"><div class="msg ai">Hi! I'm a quick guide to Apoorva's CV. Ask about product work, consulting, Wells Fargo, competitions or hobbies.</div></div>
-      <form class="inp" id="askf"><input id="q" placeholder="e.g. Why product management?" autocomplete="off"><button aria-label="Send">↑</button></form>
-      <div class="sugs" id="sugs"><button>Why product + consulting?</button><button>Wipro internship?</button><button>Wells Fargo impact?</button><button>Case competitions?</button><button>Certifications?</button><button>Hobbies?</button></div>
-      <div class="note">// answers are pre-written from my CV, not live AI</div>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer>
@@ -668,10 +741,10 @@ const MILES=[
 ];
 
 /* =============== ticker / rotator =============== */
-const TK=[['SHARK TANK','#1 / 2000+','up'],['ESCALATIONS','▼ 70%','dn'],['RECONCILIATION','▼ 55%','dn'],['THROUGHPUT','100%','up'],['DOWNTIME (PROJ.)','▼ 40%','dn'],['SAVINGS (PROJ.)','▲ $1.5M/yr','up'],['DAILY REQUESTS','▲ 5,000+','up'],['CTR','▲ 20%','up'],['MOBILE SHIFT','▲ 0.36M users/yr','up'],['SPRINGER','300+ accesses','up'],['DATA INTEGRITY','100% · 10M rows','up'],['TRAINING TIME','▼ 40%','dn']];
+const TK=[['IIM KOZHIKODE','MBA \'25–27','up'],['SHARK TANK','#1 / 2000+','up'],['ESCALATIONS','▼ 70%','dn'],['RECONCILIATION','▼ 55%','dn'],['THROUGHPUT','100%','up'],['DOWNTIME (PROJ.)','▼ 40%','dn'],['SAVINGS (PROJ.)','▲ $1.5M/yr','up'],['DAILY REQUESTS','▲ 5,000+','up'],['CTR','▲ 20%','up'],['MOBILE SHIFT','▲ 0.36M users/yr','up'],['SPRINGER','300+ accesses','up'],['DATA INTEGRITY','100% · 10M rows','up'],['TRAINING TIME','▼ 40%','dn']];
 const tkHTML=TK.map(([a,b,c])=>`<span><b>${a}</b><span class="${c}">${b}</span></span>`).join('');
 $('#track').innerHTML=tkHTML+tkHTML;
-const ROLES=['ex-Wells Fargo engineer','Wipro Consulting PPI','Shark Tank winner','Springer author','MBA @ IIM Kozhikode'];
+const ROLES=['MBA @ IIM Kozhikode','ex-Wells Fargo engineer','Wipro Consulting PPI','Shark Tank winner','Springer author'];
 let ri=0;setInterval(()=>{const s=$('#swap');s.classList.add('out');setTimeout(()=>{ri=(ri+1)%ROLES.length;s.textContent=ROLES[ri];s.classList.remove('out')},500)},2600);
 
 /* =============== charts =============== */
@@ -693,7 +766,7 @@ function drawCareer(){
   const ln=svg.querySelector('.ln'),L=ln.getTotalLength();ln.style.strokeDasharray=L;ln.style.strokeDashoffset=L;ln.style.transition='stroke-dashoffset 2.4s cubic-bezier(.2,.8,.2,1)';
   svg.querySelector('.area').style.transition='opacity 1.5s 1s';
   const tip=$('#tip'),box=svg.parentElement;
-  pts.forEach(p=>{const c=document.createElementNS(NS,'circle');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r',4.5);c.setAttribute('fill','#07070c');c.setAttribute('stroke','#4ade80');c.setAttribute('stroke-width',2);c.style.cursor='pointer';
+  pts.forEach(p=>{const c=document.createElementNS(NS,'circle');c.setAttribute('cx',p.x);c.setAttribute('cy',p.y);c.setAttribute('r',4.5);c.setAttribute('fill',getComputedStyle(document.documentElement).getPropertyValue('--bg'));c.setAttribute('stroke','#4ade80');c.setAttribute('stroke-width',2);c.style.cursor='pointer';
     const show=()=>{c.setAttribute('r',7);const r=svg.getBoundingClientRect(),br=box.getBoundingClientRect();tip.innerHTML=`<b>${p.m[0]}</b>${p.m[1]}`;tip.style.left=Math.min(r.left-br.left+p.x*(r.width/W)+10,br.width-250)+'px';tip.style.top=(r.top-br.top+p.y*(r.height/H)-50)+'px';tip.style.opacity=1};
     c.addEventListener('mouseenter',show);c.addEventListener('click',show);c.addEventListener('mouseleave',()=>{c.setAttribute('r',4.5);tip.style.opacity=0});svg.appendChild(c)});
   const last=pts.at(-1);svg.insertAdjacentHTML('beforeend',`<text x="${last.x-6}" y="${last.y-14}" fill="#4ade80" font-size="12" text-anchor="end" font-family="JetBrains Mono">${MILES.length} milestones ▲</text>`);
@@ -760,7 +833,7 @@ bindTilt();
 /* =============== scroll: progress, nav, parallax =============== */
 let mx=0,my=0;
 addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;const c=$('#cur');c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'});
-const navSecs=['top','numbers','cases','experience','competitions','projects','ask'].map(id=>document.getElementById(id));
+const navSecs=['top','numbers','ask','cases','experience','competitions','projects'].map(id=>document.getElementById(id));
 function onScroll(){
   const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
   $('#prog').style.width=(y/h*100)+'%';
@@ -806,25 +879,81 @@ $$('canvas[data-fx]').forEach(cv=>{
   })();
 });
 
+/* =============== themes =============== */
+const THEMES=[['dusk','Dusk','linear-gradient(135deg,#141522,#b39dfb)'],['ocean','Ocean','linear-gradient(135deg,#0f2130,#5eead4)'],['plum','Plum','linear-gradient(135deg,#1d1426,#ff8fa3)'],['light','Light','linear-gradient(135deg,#f7f4ee,#e8692e)']];
+$('#themes').innerHTML=THEMES.map(([k,n,g])=>`<button data-t="${k}" title="${n} theme" aria-label="${n} theme" style="background:${g}"></button>`).join('');
+function setTheme(k){document.documentElement.dataset.theme=k;try{localStorage.setItem('ac-theme',k)}catch(e){}
+  $$('#themes button').forEach(b=>b.classList.toggle('on',b.dataset.t===k));
+  if(window.sceneTheme)window.sceneTheme(k);if(window.drawCareer)setTimeout(drawCareer,50)}
+$$('#themes button').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+$$('#themes button').forEach(b=>b.classList.toggle('on',b.dataset.t===document.documentElement.dataset.theme));
+
 /* =============== ask me anything =============== */
-const KB=[
- [/why|product|pm\b|consult|goal|role|career|looking/i,"I sit between building and advising. At Wells Fargo I shipped an MVP in 2 months, won Shark Tank with a mobile-shift idea and moved real metrics (escalations down 70%). At Wipro I turned technology options into business cases. Product management and tech consulting both need someone who can talk to engineers and to the business, and that's my edge."],
- [/wipro|intern|smart|plant|ppi/i,"At Wipro Consulting (Apr–Jun 2026, Energy, Manufacturing & Resources) I evaluated 6 digital use cases, ran 3 priority ones through a 6-step vendor framework, benchmarked 9 implementations, built a reusable MPP → Power BI dashboard over 50,000+ deliverables, and proposed prescriptive maintenance (−40% downtime, $1.5M/yr, projected). I received a PPI."],
- [/wells|fargo|bank|pega|kafka|engineer|impact/i,"34 months at Wells Fargo: 5,000+ daily requests at 100% throughput (PEGA + Kafka), escalations down 70%, reconciliation effort down 55%, 10M+ rows ETL'd with 100% integrity, 10+ releases owned, juniors trained to contribute live in 3 months, plus a Shark Tank win and a Manager Spotlight Award."],
- [/case|comp|axis|capgemini|jindal|shark/i,"Shark Tank winner (Wells Fargo, 2,000+ entries) · Axis Bank MOVES 2026 campus finalist · Capgemini L'Innovateur campus finals (top 3) · Jindal Stainless semi-finals (3,000+). I also did the BCG strategy and JPMorgan IB simulations on Forage."],
- [/cert|azure|udemy|forage|bcg|jpm|course/i,"AI-900 and AZ-900 (Microsoft), PCSA (Pega), Become a Product Manager (Udemy, 13 hrs) and the BCG and JPMorgan simulations (Forage). MBA coursework covers AI for Business, Management of IT Products, Strategy, Corporate Finance, Design Thinking and more."],
- [/hobb|fun|free|sport|football|cycl|stock|trad/i,"Football (watching), competitive programming, cycling and stock market trading. I played U-18 zonal throwball and U-16 zonal table tennis, and I was a school quizmaster."],
- [/project|research|paper|springer|gesture|event/i,"Projects: Location-Based Event Detection (0.8M+ tweets, 50% faster pre-processing, 80%+ accuracy, 10/10 grade), a Hand Gesture Painter (OpenCV, 45+ hrs of video), a CPM plan that cut a launch from 52 to 24 weeks, and a Springer paper on a self-improving search engine (300+ accesses)."],
- [/educat|study|mba|iim|school|college|grade|cgpa/i,"MBA at IIM Kozhikode (2025–27). B.E. in Computer Science from MIT, Anna University: 8.1/10, First Class, 28 A+ grades in 37 subjects. Class XII: 92.67%, top 3 %ile of 0.8M+ students."],
- [/lead|responsib|committee|event|nss|organ/i,"Elected member of the Placements Committee at IIM Kozhikode. Event Coordinator at Prayatna (2,000+ registrations, a CTF hackathon, and a sponsor who gave the winners PPIs). Organiser of Prakasam Prati (500+ students). Led an NSS rural camp."],
- [/contact|reach|hire|linkedin|email/i,"LinkedIn is the best way: linkedin.com/in/apoorvachandarpadmanaban"],
- [/^(hi|hey|hello|yo)\b/i,"Hey! Try asking: why product + consulting?"]
-];
-function say(t,w){const m=document.createElement('div');m.className='msg '+w;m.textContent=t;$('#log').appendChild(m);$('#log').scrollTop=1e6;return m}
-function ask(q){if(!q.trim())return;say(q,'me');const hit=KB.find(([r])=>r.test(q));const m=say('typing…','ai');
-  setTimeout(()=>{m.textContent=hit?hit[1]:"I don't have a pre-written answer for that one. Try product, Wipro, Wells Fargo, competitions, projects or hobbies, or message me on LinkedIn.";$('#log').scrollTop=1e6},600)}
-$('#askf').onsubmit=e=>{e.preventDefault();ask($('#q').value);$('#q').value=''};
-$$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
+const QA={
+ 'About me':[
+  ['Who are you, in 30 seconds?',"I'm Apoorva, an MBA candidate at IIM Kozhikode (2025–27) with an engineering background. I spent 34 months at Wells Fargo building operations tech that handled 5,000+ requests a day, won the company-wide Shark Tank out of 2,000+ entries, and then spent a summer at Wipro Consulting working on Smart Plant digitalisation. I'm aiming for product management and technology consulting."],
+  ['Why product management and tech consulting?',"Both roles sit between building and advising, which is where I've worked best. At Wells Fargo I shipped an MVP in 2 months and pitched product ideas that leadership backed. At Wipro I turned technology options into business cases with measurable impact. I can talk to engineers and to the business, and both roles need that."],
+  ['What roles are you looking for?',"Product management (APM/PM) and technology consulting roles, especially in digital transformation, fintech and banking, enterprise tech and AI-led products."],
+  ['What makes you different from other MBA candidates?',"I've shipped production systems: PEGA and Kafka utilities at 5,000+ requests a day, 10+ releases owned, 10M+ rows processed for compliance. I've also won a pitch (Shark Tank, #1 of 2,000+) and done real consulting work (Wipro, PPI). That mix of hands-on tech and business framing is rare."],
+  ['What is your superpower?',"Turning a messy problem into a number people can act on. Examples: −70% escalations, −55% reconciliation effort, and a $1.5M/yr prescriptive maintenance case. I like it when the impact is measurable."]],
+ 'Wipro Consulting':[
+  ['What did you do at Wipro Consulting?',"I was a WiSE Consulting Intern (Apr–Jun 2026) in Energy, Manufacturing & Resources. I supported a Digitalisation & Smart Plant program: I evaluated 6 new digital use cases, prioritised 3, benchmarked 9 industry implementations, built a reusable MPP → Power BI dashboard and recommended an integration-led architecture."],
+  ['How did you evaluate vendors?',"I ran 3 priority use cases through a 6-step vendor framework with weighted scorecards for technology selection, then validated the recommendations against 9 industry implementations benchmarked with vendors, so each choice came with quantifiable outcomes."],
+  ['What was the $1.5M saving?',"A prescriptive maintenance proposal, projected to cut unplanned downtime by 40% and save about $1.5M a year. I also found 2%+ pump energy savings through clamp-on flow measurement for better energy monitoring."],
+  ['What was the Power BI dashboard?',"A reusable dashboard that replaced manual navigation of MPP (Microsoft Project) files. It reads MPP Excel dumps without reconfiguration and covers 50,000+ L3/L4 deliverables, AC% and CT% work units, and project variance."],
+  ['Did you get a PPI?',"Yes, Wipro Consulting offered me a pre-placement interview (PPI) after the internship."]],
+ 'Wells Fargo':[
+  ['What did you build at Wells Fargo?',"As a Software Engineer in Technology for the Chief Operating Office, I built a PEGA and Kafka utility that handles 5,000+ daily requests across 12+ apps with 100% throughput, and I managed 10+ Kafka streams. As a Program Associate I built failure-monitoring and reporting utilities and predictive Tableau dashboards."],
+  ['What was your biggest impact there?',"Cutting business escalations by 70% with a reporting utility that catches failures in critical processes. Close behind: leading an async transition as a cross-team POC, which cut reconciliation effort by 55% and saved 12+ hours a month."],
+  ['How did you deliver an MVP in 2 months?',"By aligning 5+ stakeholders early and prototyping a simpler process directly in PEGA, so people reacted to something working instead of a document."],
+  ['Tell me about the Shark Tank win',"I won Wells Fargo's company-wide Shark Tank out of 2,000+ entries with a desktop-to-mobile shift that had low time-to-market. The roadmap was projected to move 0.36M+ US users a year to mobile, and business leaders recognised it for its impact."],
+  ['Did you lead or mentor anyone?',"Yes. I trained 3+ juniors through domain certifications so they were contributing live within 3 months, and I cut new-joiner training time by 40% by standardising training material. I also led a cross-team POC and owned 10+ releases."],
+  ['How do you handle data and compliance?',"I ETL-processed 10M+ rows with 100% data integrity, removing 15+ sensitive fields as regulators required. I also automated internal monitoring and auditing, which saved 10+ manual hours a month."],
+  ['Any awards there?',"The Manager Spotlight Award among 20+ peers, for speed and accuracy, and the company-wide Shark Tank win."]],
+ 'Product thinking':[
+  ['What product ideas have you pitched?',"Three: (1) a desktop-to-mobile channel shift (Shark Tank winner, 0.36M+ users a year projected); (2) an offline P2P transaction system, projected to cut server load by 20% and overhead costs by 50%; (3) a GenAI hyper-personalised banking model, proposed at an ideation event to lift digital engagement."],
+  ['How do you use data in product decisions?',"I start from users and numbers. Triangulating user preferences into personas boosted CTRs by 20%. Single-click dashboards replaced a 5-click retrieval flow and saved 30+ hours a year. At Wipro every recommendation was backed by benchmarks and weighted scorecards."],
+  ['How do you work with stakeholders?',"Prototype early and align often. I aligned 5+ stakeholders to ship an MVP in 2 months, ran a cross-team async POC, and turned failure monitoring into reporting the business trusted, which cut escalations by 70%."],
+  ['Any formal product training?',"Udemy's 13-hour Become a Product Manager certification (Agile, Figma, value proposition canvas, GTM, stakeholder alignment), plus MBA courses such as Management of IT Products & Services, Innovation & Design Thinking, and AI for Business."]],
+ 'Competitions & certs':[
+  ['Which case competitions have you done?',"SDI Shark Tank at Wells Fargo (winner, 2,000+ entries) · Axis Bank MOVES 2026 (campus finalist, enterprise transformation strategy for 2035) · Capgemini L'Innovateur 2026 (campus finals, top 3, Data-AI strategy for auto M&A) · Jindal Stainless (semi-finals among 3,000+, growth strategy)."],
+  ['What certifications do you have?',"Microsoft AI-900 (Azure AI Fundamentals) and AZ-900 (Azure Fundamentals), Pega Certified System Architect (PCSA), Udemy's Become a Product Manager, and the BCG Strategy Consulting and JPMorgan Investment Banking simulations on Forage."],
+  ['What did you do in the BCG and JPMorgan simulations?',"BCG: delivered strategic recommendations by analysing client data, industry trends and profit levers. JPMorgan: built a DCF model to value an M&A target, adjusted it for a competitor bid, and picked the ideal target on strategic and financial criteria."]],
+ 'Projects & academics':[
+  ['Tell me about your research paper',"I published a paper on a self-improving search engine in Advances in Computing, ERCICA 2023 (Springer). It has 300+ accesses."],
+  ['What engineering projects did you build?',"Location-Based Event Detection: processed 0.8M+ tweets, built a Trust Network to filter spam, and cut pre-processing time by 50% with 80%+ accuracy (graded 10/10). Hand Gesture Painter: OpenCV models trained on 45+ hours of video for a real-time hand-tracking paint app."],
+  ['How did you do academically?',"B.E. in Computer Science from MIT, Anna University: 8.1/10, First Class, 28 A+ grades in 37 subjects. Class XII: 92.67%, top 3 %ile of 0.8M+ students in Tamil Nadu, Best Performer (top 5 %ile of 400+). Class X: 92%."],
+  ['What are you studying at IIM Kozhikode?',"16 MBA courses so far, including AI for Business, Management of IT Products & Services, Strategic Management, Global Business Strategy, Corporate Finance, Fixed Income Securities, Operations Management, and Innovation & Design Thinking. I'm also an elected member of the Students' Placements Committee."],
+  ['What was the MS Project launch plan?',"At IIM Kozhikode I built a CPM network in MS Project with 25+ activities and 30+ dependencies across marketing and advertising. Mapping the 11-activity critical path and running resources in parallel cut the launch from 52 weeks to 24."]],
+ 'Beyond work':[
+  ['What do you do for fun?',"Watching football, competitive programming, cycling and stock market trading."],
+  ['What leadership roles have you held outside work?',"Elected member of IIM Kozhikode's Students' Placements Committee. Event Coordinator at Prayatna, a national symposium: 10+ colleges, 2,000+ registrations, a CTF hackathon, and a sponsor who gave the winners PPIs. Organiser of Prakasam Prati (500+ students) and official quizmaster. Led an NSS rural camp."],
+  ['Do you play any sports?',"I competed in U-18 zonal-level Throwball and U-16 zonal-level Table Tennis in Tamil Nadu, and I follow football closely."],
+  ['Any quizzing or science wins?',"1st of 100+ in the NatQ 2014 quiz, runner-up among 100+ schools in the Rotaract Science Talent exhibition, runner-up of 200+ at the SciMax expo, and top 5 %ile in the All India GK Exam."],
+  ['How can I contact you?',"LinkedIn is the best way: linkedin.com/in/apoorvachandarpadmanaban. You can also use the Connect button at the top of the page."]]
+};
+const ALL=Object.values(QA).flat();
+const catNames=Object.keys(QA);let curCat=catNames[0];
+$('#cats').insertAdjacentHTML('beforeend',catNames.map(c=>`<button class="cat" data-c="${c}">${c}<small>${QA[c].length}</small></button>`).join(''));
+function showCat(c){curCat=c;$$('.cat').forEach(b=>b.classList.toggle('on',b.dataset.c===c));
+  $('#qs').innerHTML=QA[c].map(([q],i)=>`<button data-i="${i}">${q}</button>`).join('');
+  $$('#qs button').forEach(b=>b.onclick=()=>{b.classList.add('used');answer(b.textContent,QA[c][+b.dataset.i][1])})}
+$$('.cat').forEach(b=>b.onclick=()=>showCat(b.dataset.c));
+function bubble(cls,txt){const m=document.createElement('div');m.className='msg '+cls;m.textContent=txt;$('#log').appendChild(m);$('#log').scrollTop=1e6;return m}
+let typing=null;
+function answer(q,a){bubble('me',q);const m=bubble('ai','');m.innerHTML='<span class="cur"></span>';$('#status').textContent='typing…';
+  clearInterval(typing);let i=0;const step=reduce?a.length:3;
+  setTimeout(()=>{typing=setInterval(()=>{i=Math.min(a.length,i+step);m.textContent=a.slice(0,i);if(i<a.length)m.insertAdjacentHTML('beforeend','<span class="cur"></span>');$('#log').scrollTop=1e6;
+    if(i>=a.length){clearInterval(typing);$('#status').textContent='online · answers from my CV'}},16)},350)}
+const STOP=new Set('what when where which your you are the and did how was have has with for about tell any that this from does do me i my is in of to a an it on at can'.split(' '));
+function findAnswer(q){const w=q.toLowerCase().replace(/[^a-z0-9$ ]/g,' ').split(/\s+/).filter(x=>x.length>2&&!STOP.has(x));
+  let best=null,bs=0;ALL.forEach(([qq,aa])=>{const hq=qq.toLowerCase(),ha=aa.toLowerCase();let sc=0;w.forEach(x=>{if(hq.includes(x))sc+=3;else if(ha.includes(x))sc+=1});if(sc>bs){bs=sc;best=aa}});
+  return bs>=2?best:"I don't have a pre-written answer for that one yet. Try a topic on the left, or message me on LinkedIn."}
+$('#askf').onsubmit=e=>{e.preventDefault();const q=$('#q').value.trim();if(!q)return;$('#q').value='';answer(q,findAnswer(q))};
+bubble('ai',"Hi! 👋 I'm a guide to Apoorva's CV. Pick a topic on the left and tap a question, or type your own below.");
+showCat(curCat);
+/* floating ask button hides when the section is visible */
+new IntersectionObserver(e=>$('#fab').classList.toggle('hide',e[0].isIntersecting),{threshold:.25}).observe($('#ask'));
 
 /* =============== THREE.JS SCENE =============== */
 (function(){
@@ -832,15 +961,16 @@ $$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
   const canvas=$('#three');
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio,isMobile?1.5:2));
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.82;
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(35,1,.1,100);camera.position.set(0,0,20);
   function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()}
   resize();addEventListener('resize',resize);
 
-  scene.add(new THREE.HemisphereLight(0xc8c0ff,0x1a1020,.9));
-  const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(5,8,10);scene.add(key);
-  const rim=new THREE.PointLight(0xff7a3d,1.6,40);rim.position.set(-8,-4,6);scene.add(rim);
-  const rim2=new THREE.PointLight(0x5eead4,1.0,40);rim2.position.set(9,5,4);scene.add(rim2);
+  const hemi=new THREE.HemisphereLight(0xc8c0ff,0x1a1020,.75);scene.add(hemi);
+  const key=new THREE.DirectionalLight(0xffffff,.85);key.position.set(5,8,10);scene.add(key);
+  const rim=new THREE.PointLight(0xff7a3d,.9,40);rim.position.set(-8,-4,6);scene.add(rim);
+  const rim2=new THREE.PointLight(0x5eead4,.6,40);rim2.position.set(9,5,4);scene.add(rim2);
 
   const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.45,metalness:.1,flatShading:true},o));
   const box=(w,h,d,m)=>new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);
@@ -855,7 +985,7 @@ $$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
     const screenTex=tex((x,w,h)=>{x.fillStyle='#0b0b14';x.fillRect(0,0,w,h);const cols=['#ff7a3d','#a78bfa','#5eead4','#fcd34d','#b3b1bd'];
       for(let i=0;i<14;i++){let xx=20+(i%3)*18;x.fillStyle=cols[i%5];x.fillRect(xx,18+i*21,40+Math.random()*180,9);x.fillStyle='#55556a';x.fillRect(xx+240,18+i*21,30+Math.random()*120,9)}
       x.strokeStyle='#4ade80';x.lineWidth=4;x.beginPath();x.moveTo(330,280);[[360,250],[390,262],[420,220],[450,230],[490,170]].forEach(p=>x.lineTo(...p));x.stroke()});
-    const sc=new THREE.Mesh(new THREE.PlaneGeometry(3,1.9),new THREE.MeshBasicMaterial({map:screenTex}));sc.position.set(0,1.05,.056);scr.add(sc);
+    const sc=new THREE.Mesh(new THREE.PlaneGeometry(3,1.9),new THREE.MeshBasicMaterial({map:screenTex,color:0xc4c4c4}));sc.position.set(0,1.05,.056);scr.add(sc);
     scr.position.z=-1.1;scr.rotation.x=-.28;g.add(scr);return g}
 
   function building(colBody,colRoof,cols=5,dome=false){const g=new THREE.Group();const m=M(colBody),r=M(colRoof);
@@ -875,22 +1005,22 @@ $$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
     const tas=cyl(.05,.16,.6,8,M(0xff7a3d));tas.position.set(0,.2,1.27);g.add(tas);return g}
 
   function ball(){const g=new THREE.Group();const geo=new THREE.IcosahedronGeometry(1.25,1);
-    g.add(new THREE.Mesh(geo,M(0xf4f2ee,{roughness:.6})));
+    g.add(new THREE.Mesh(geo,M(0xcfccc4,{roughness:.75})));
     const ico=new THREE.IcosahedronGeometry(1.26,0);const pos=ico.attributes.position;const seen={};
     for(let i=0;i<pos.count;i++){const v=new THREE.Vector3().fromBufferAttribute(pos,i);const key=v.toArray().map(n=>n.toFixed(2)).join();if(seen[key])continue;seen[key]=1;
       const p=new THREE.Mesh(new THREE.CircleGeometry(.36,5),new THREE.MeshStandardMaterial({color:0x111118,side:THREE.DoubleSide}));p.position.copy(v.multiplyScalar(1.005));p.lookAt(0,0,0);g.add(p)}
     g.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:0x222230})));return g}
 
   function stocks(){const g=new THREE.Group();const hs=[.8,1.3,1.0,1.8,1.5,2.4,2.9];
-    hs.forEach((h,i)=>{const up=i===0||h>=hs[i-1];const b=box(.38,h,.38,M(up?0x4ade80:0xf87171,{emissive:up?0x0a3a1a:0x3a0a0a}));b.position.set(-1.5+i*.5,h/2-1.4,0);g.add(b);
-      const wick=box(.05,h+.4,.05,M(0xdddddd));wick.position.copy(b.position);g.add(wick)});
+    hs.forEach((h,i)=>{const up=i===0||h>=hs[i-1];const b=box(.38,h,.38,M(up?0x3aa76a:0xc95858,{roughness:.6}));b.position.set(-1.5+i*.5,h/2-1.4,0);g.add(b);
+      const wick=box(.05,h+.4,.05,M(0x9a9aa8));wick.position.copy(b.position);g.add(wick)});
     const pts=hs.map((h,i)=>new THREE.Vector3(-1.5+i*.5,h-1.2,.45));const curve=new THREE.CatmullRomCurve3(pts);
-    g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,40,.05,8),M(0xff7a3d,{emissive:0x552000})));
-    const cone=new THREE.Mesh(new THREE.ConeGeometry(.18,.4,12),M(0xff7a3d,{emissive:0x552000}));cone.position.copy(pts.at(-1)).add(new THREE.Vector3(.15,.2,0));cone.rotation.z=-.6;g.add(cone);
+    g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,40,.05,8),M(0xe0703a)));
+    const cone=new THREE.Mesh(new THREE.ConeGeometry(.18,.4,12),M(0xe0703a));cone.position.copy(pts.at(-1)).add(new THREE.Vector3(.15,.2,0));cone.rotation.z=-.6;g.add(cone);
     const base=box(3.8,.08,1.2,M(0x2b2b3a));base.position.y=-1.42;g.add(base);return g}
 
   function coin(sym='$'){const t=tex((x,w,h)=>{x.fillStyle='#e9b949';x.fillRect(0,0,w,h);x.strokeStyle='#b8860b';x.lineWidth=18;x.beginPath();x.arc(w/2,h/2,w/2-20,0,7);x.stroke();x.fillStyle='#8a5a00';x.font='bold 300px Syne, sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText(sym,w/2,h/2+16)},512,512);
-    const side=M(0xd4a017,{metalness:.8,roughness:.25,flatShading:false}),face=new THREE.MeshStandardMaterial({map:t,metalness:.6,roughness:.3});
+    const side=M(0xb88a1c,{metalness:.6,roughness:.4,flatShading:false}),face=new THREE.MeshStandardMaterial({map:t,metalness:.4,roughness:.45,color:0xd8d8d8});
     const c=new THREE.Mesh(new THREE.CylinderGeometry(1,1,.16,40),[side,face,face]);c.rotation.x=Math.PI/2;const g=new THREE.Group();g.add(c);return g}
 
   function wheel(){const g=new THREE.Group();g.add(new THREE.Mesh(new THREE.TorusGeometry(1.2,.11,10,40),M(0x1d1d2a)));
@@ -898,10 +1028,10 @@ $$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
     for(let i=0;i<12;i++){const s=box(.02,2.1,.02,M(0xd0d0e0,{metalness:.8}));s.rotation.z=i*Math.PI/12;g.add(s)}
     g.add(cyl(.14,.14,.25,12,M(0xff7a3d)).rotateX(Math.PI/2));return g}
 
-  function paddle(){const g=new THREE.Group();const head=cyl(.9,.9,.08,32,M(0xe23b3b,{flatShading:false}));head.rotation.x=Math.PI/2;g.add(head);
+  function paddle(){const g=new THREE.Group();const head=cyl(.9,.9,.08,32,M(0xb83a3a,{flatShading:false}));head.rotation.x=Math.PI/2;g.add(head);
     const back=cyl(.9,.9,.02,32,M(0x111111));back.rotation.x=Math.PI/2;back.position.z=-.05;g.add(back);
     const h=box(.24,.9,.16,M(0xb07a45));h.position.y=-1.25;g.add(h);
-    const b=new THREE.Mesh(new THREE.SphereGeometry(.16,16,12),M(0xffffff,{flatShading:false}));b.position.set(.9,.9,.3);g.add(b);return g}
+    const b=new THREE.Mesh(new THREE.SphereGeometry(.16,16,12),M(0xdddddd,{flatShading:false}));b.position.set(.9,.9,.3);g.add(b);return g}
 
   function server(){const g=new THREE.Group();for(let i=0;i<3;i++){const u=box(2.2,.5,1.5,M(0x22222f,{metalness:.5}));u.position.y=i*.6-.6;g.add(u);
       for(let j=0;j<4;j++){const led=box(.08,.08,.02,new THREE.MeshBasicMaterial({color:[0x4ade80,0x5eead4,0xff7a3d,0x4ade80][j]}));led.position.set(-.8+j*.2,i*.6-.6,.76);led.userData.blink=Math.random()*6;g.add(led)}
@@ -910,7 +1040,7 @@ $$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
   function phone(){const g=new THREE.Group();g.add(box(1.1,2.2,.12,M(0x1d1d2a,{metalness:.5})));
     const t=tex((x,w,h)=>{const gr=x.createLinearGradient(0,0,w,h);gr.addColorStop(0,'#ff7a3d');gr.addColorStop(1,'#a78bfa');x.fillStyle=gr;x.fillRect(0,0,w,h);x.fillStyle='rgba(255,255,255,.9)';x.font='bold 40px Inter';x.fillText('+0.36M',30,120);x.font='26px Inter';x.fillText('users/yr → mobile',30,160);
       for(let i=0;i<4;i++){x.fillStyle='rgba(255,255,255,.25)';x.fillRect(30,220+i*70,w-60,50)}},320,640);
-    const s=new THREE.Mesh(new THREE.PlaneGeometry(1,2.05),new THREE.MeshBasicMaterial({map:t}));s.position.z=.065;g.add(s);return g}
+    const s=new THREE.Mesh(new THREE.PlaneGeometry(1,2.05),new THREE.MeshBasicMaterial({map:t,color:0xb8b8b8}));s.position.z=.065;g.add(s);return g}
 
   // [builder, x(-1..1 of view width), z, appear (in viewport-heights scrolled), speed, scale, mobileKeep]
   const LAYOUT=[
@@ -943,7 +1073,10 @@ $$('#sugs button').forEach(b=>b.onclick=()=>ask(b.textContent));
   const N=isMobile?250:600,pg=new THREE.BufferGeometry(),pa=new Float32Array(N*3);
   for(let i=0;i<N;i++){pa[i*3]=(Math.random()-.5)*40;pa[i*3+1]=(Math.random()-.5)*30;pa[i*3+2]=(Math.random()-.5)*20-4}
   pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
-  const dust=new THREE.Points(pg,new THREE.PointsMaterial({color:0xffffff,size:.05,transparent:true,opacity:.5}));scene.add(dust);
+  const dustMat=new THREE.PointsMaterial({color:0xffffff,size:.05,transparent:true,opacity:.45});const dust=new THREE.Points(pg,dustMat);scene.add(dust);
+  const TH={dusk:[.82,0xc8c0ff,0xffffff,.45,0xff7a3d,0x5eead4],ocean:[.85,0xbfe6ff,0xd8f2ff,.45,0xffa45c,0x5eead4],plum:[.85,0xffd0ef,0xffe6f6,.45,0xff8fa3,0xc4a1ff],light:[1.0,0xffffff,0x3a3550,.35,0xe8692e,0x7c5cdb]};
+  window.sceneTheme=k=>{const t=TH[k]||TH.dusk;renderer.toneMappingExposure=t[0];hemi.color.setHex(t[1]);hemi.groundColor.setHex(k==='light'?0x8a8070:0x1a1020);hemi.intensity=k==='light'?1.0:.75;dustMat.color.setHex(t[2]);dustMat.opacity=t[3];rim.color.setHex(t[4]);rim2.color.setHex(t[5])};
+  window.sceneTheme(document.documentElement.dataset.theme);
 
   let smx=0,smy=0,vis=true,t0=performance.now();
   document.addEventListener('visibilitychange',()=>vis=!document.hidden);
